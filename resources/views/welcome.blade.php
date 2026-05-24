@@ -3,93 +3,139 @@
 @section('title', 'Welcome')
 
 @section('content')
-{{-- Hero --}}
-<div style="margin: -2.5rem -12px 0; padding: 5rem 12px 4rem; background: var(--forest); position: relative; overflow: hidden;">
-    {{-- Subtle grain texture --}}
-    <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/><feColorMatrix type=%22saturate%22 values=%220%22/></filter><rect width=%22200%22 height=%22200%22 filter=%22url(%23n)%22 opacity=%220.06%22/></svg>');opacity:.4;pointer-events:none;"></div>
 
-    <div class="container" style="position:relative;">
-        <div class="row align-items-center">
-            <div class="col-lg-7">
-                <div style="display:inline-block;background:var(--amber);color:var(--dark);font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;border-radius:4px;margin-bottom:1.25rem;">
-                    BIIT 2305 · Web Application Development
+{{-- ── Hero — Left-aligned split (DESIGN_VARIANCE: 8, no centered hero) ── --}}
+<div style="margin:-2.5rem -12px 0;background:var(--forest);position:relative;overflow:hidden;">
+
+    {{-- Grain texture overlay --}}
+    <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/><feColorMatrix type=%22saturate%22 values=%220%22/></filter><rect width=%22200%22 height=%22200%22 filter=%22url(%23n)%22 opacity=%220.07%22/></svg>');opacity:.5;pointer-events:none;"></div>
+
+    <div class="container" style="position:relative;padding-top:5rem;padding-bottom:5.5rem;">
+        <div class="row align-items-center g-5">
+
+            {{-- Left: content block (left-aligned, not centered) --}}
+            <div class="col-lg-6">
+                <div style="display:inline-block;background:var(--amber);color:var(--dark);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .9rem;border-radius:4px;margin-bottom:1.5rem;">
+                    BIIT 2305 &middot; Web Application Development
                 </div>
-                <h1 style="font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,5vw,3.8rem);color:var(--white);line-height:1.1;margin-bottom:1.25rem;">
+
+                <h1 style="font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,5vw,4.4rem);color:var(--white);line-height:1.05;margin-bottom:1.4rem;text-align:left;">
                     Less Waste.<br>
                     <em style="color:var(--amber);">More Meals.</em>
                 </h1>
-                <p style="color:rgba(255,255,255,.7);font-size:1.05rem;max-width:480px;margin-bottom:2rem;line-height:1.7;">
+
+                <p style="color:rgba(255,255,255,.68);font-size:1rem;max-width:440px;margin-bottom:2.5rem;line-height:1.75;text-align:left;">
                     FoodSaver connects Malaysian food businesses with people who need affordable food — reducing waste, one listing at a time.
                 </p>
-                <div class="d-flex flex-wrap gap-3">
-                    <a href="{{ route('register') }}" class="btn-amber" style="padding:.75rem 2rem;font-size:1rem;border-radius:10px;text-decoration:none;">
+
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <a href="{{ route('register') }}" class="btn-amber" style="padding:.8rem 2.1rem;font-size:.95rem;border-radius:10px;text-decoration:none;">
                         Get Started Free
                     </a>
-                    <a href="{{ route('login') }}" style="color:rgba(255,255,255,.8);font-size:.95rem;font-weight:500;display:flex;align-items:center;gap:.4rem;text-decoration:none;padding:.75rem 0;">
+                    <a href="{{ route('login') }}" style="color:rgba(255,255,255,.7);font-size:.9rem;font-weight:500;display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;transition:color .2s;">
                         Already have an account <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
             </div>
-            <div class="col-lg-5 d-none d-lg-flex justify-content-end">
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:320px;transform:rotate(2deg);">
-                    @foreach([['bi-shop','Vendors','25+ businesses'],['bi-people','Buyers','Save on meals'],['bi-leaf','Eco','Less landfill'],['bi-heart','Halal','Shariah compliant']] as $f)
-                    <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:1.2rem;backdrop-filter:blur(4px);">
-                        <i class="bi {{ $f[0] }}" style="color:var(--amber);font-size:1.4rem;"></i>
-                        <div style="color:var(--white);font-weight:700;font-size:.9rem;margin-top:.5rem;">{{ $f[1] }}</div>
-                        <div style="color:rgba(255,255,255,.5);font-size:.75rem;">{{ $f[2] }}</div>
+
+            {{-- Right: staggered stat cards (asymmetric float, DESIGN_VARIANCE: 8) --}}
+            <div class="col-lg-5 offset-lg-1 d-none d-lg-block">
+                <div style="position:relative;height:380px;">
+
+                    {{-- Card 1: top-left, large --}}
+                    <div style="position:absolute;top:0;left:0;width:230px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:1.4rem;backdrop-filter:blur(6px);">
+                        <i class="bi bi-shop-window" style="color:var(--amber);font-size:1.3rem;"></i>
+                        <div style="font-family:'DM Serif Display',serif;font-size:2rem;color:var(--white);margin-top:.5rem;line-height:1;">17,000</div>
+                        <div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-top:.25rem;line-height:1.4;">tonnes of food wasted in Malaysia daily</div>
                     </div>
-                    @endforeach
+
+                    {{-- Card 2: top-right, offset down —}}
+                    <div style="position:absolute;top:70px;right:0;width:200px;background:rgba(217,119,6,.18);border:1px solid rgba(217,119,6,.35);border-radius:16px;padding:1.3rem;">
+                        <i class="bi bi-currency-dollar" style="color:var(--amber);font-size:1.3rem;"></i>
+                        <div style="font-family:'DM Serif Display',serif;font-size:2rem;color:var(--white);margin-top:.5rem;line-height:1;">Free</div>
+                        <div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-top:.25rem;line-height:1.4;">to join and list food surplus</div>
+                    </div>
+
+                    {{-- Card 3: bottom-left, large —}}
+                    <div style="position:absolute;bottom:0;left:30px;width:260px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:1.4rem;">
+                        <i class="bi bi-people-fill" style="color:var(--amber);font-size:1.3rem;"></i>
+                        <div style="font-family:'DM Serif Display',serif;font-size:2rem;color:var(--white);margin-top:.5rem;line-height:1;">2.9M</div>
+                        <div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-top:.25rem;line-height:1.4;">people could be fed three meals from daily surplus</div>
+                    </div>
+
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 
-{{-- Amber divider --}}
 <hr class="amber-divider" style="margin-top:0;">
 
-{{-- How it works --}}
-<div class="mt-5 mb-4">
-    <p style="font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem;">How it works</p>
-    <h2 class="page-heading" style="font-size:2rem;">Simple for everyone.</h2>
+{{-- ── How it works — Zig-zag layout (3-equal-col BANNED per taste-skill) ── --}}
+<div style="padding:3.5rem 0 1rem;">
+    <p style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem;font-family:'Outfit',sans-serif;">How it works</p>
+    <h2 class="page-heading" style="font-size:2.2rem;margin-bottom:.5rem;">Simple for everyone.</h2>
+    <p style="color:var(--muted);font-size:.9rem;max-width:480px;">Three roles, one mission — get surplus food from those who have it to those who need it.</p>
 </div>
 
-<div class="row g-4 mb-5">
-    @foreach([
-        ['bi-shop-window','For Vendors','Post surplus food listings in minutes. Set quantity, price, and pickup time. Recover costs, reduce waste, improve your business reputation.','vendor'],
-        ['bi-bag-heart','For Buyers','Browse real-time listings from local businesses. Filter by category, reserve your food, and collect at pickup. Affordable meals, zero hassle.','buyer'],
-        ['bi-shield-check','For Admins','Monitor platform health, manage users and listings, and ensure content quality. Keep FoodSaver trustworthy and safe for everyone.','admin'],
-    ] as [$icon, $title, $desc, $role])
-    <div class="col-md-4">
-        <div class="card food-card h-100 p-4">
-            <div style="width:48px;height:48px;border-radius:12px;background:var(--cream);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;border:1px solid var(--border);">
-                <i class="bi {{ $icon }}" style="color:var(--forest);font-size:1.3rem;"></i>
+@foreach([
+    ['bi-shop-window', 'For Vendors', 'Post surplus food listings in minutes. Set quantity, price, and pickup time. Recover costs, reduce waste, and improve your business reputation in the community.', 'vendor', false],
+    ['bi-bag-heart',   'For Buyers',  'Browse real-time listings from local businesses. Filter by category, reserve your food, and collect at pickup. Affordable meals — zero hassle.', 'buyer', true],
+    ['bi-shield-check','For Admins',  'Monitor platform health, manage users and listings, and ensure content quality. Keep FoodSaver trustworthy and safe for everyone.', 'admin', false],
+] as [$icon, $title, $desc, $role, $flip])
+<div class="row align-items-center g-4 g-lg-5 mb-5 {{ $flip ? 'flex-lg-row-reverse' : '' }}" style="padding:2rem 0;">
+    {{-- Visual panel --}}
+    <div class="col-lg-5">
+        <div class="card food-card p-5" style="min-height:220px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.75rem;background:var(--cream);">
+            <div style="width:64px;height:64px;border-radius:16px;background:var(--white);display:flex;align-items:center;justify-content:center;border:1px solid var(--border);box-shadow:var(--shadow);">
+                <i class="bi {{ $icon }}" style="color:var(--forest);font-size:1.8rem;"></i>
             </div>
-            <h5 style="font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--forest);margin-bottom:.6rem;">{{ $title }}</h5>
-            <p style="color:var(--muted);font-size:.875rem;line-height:1.65;margin:0;">{{ $desc }}</p>
+            <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--forest);">{{ $title }}</div>
         </div>
     </div>
-    @endforeach
+    {{-- Text panel --}}
+    <div class="col-lg-7" style="{{ $flip ? 'padding-right:3rem;' : 'padding-left:3rem;' }}">
+        <h3 style="font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--forest);margin-bottom:.75rem;">{{ $title }}</h3>
+        <p style="color:var(--muted);font-size:.95rem;line-height:1.75;margin-bottom:1.5rem;max-width:480px;">{{ $desc }}</p>
+        <a href="{{ route('register') }}" class="btn btn-outline-primary btn-sm" style="padding:.5rem 1.25rem;">
+            Get started <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+    </div>
 </div>
+@if(!$loop->last)<hr style="border:none;border-top:1px solid var(--border);margin:0;">@endif
+@endforeach
 
-{{-- Stats strip --}}
-<div style="background:var(--forest);border-radius:16px;padding:2.5rem;margin-bottom:3rem;">
-    <div class="row text-center g-4">
-        @foreach([['17,000','tonnes of food wasted in Malaysia daily'],['4,005','tonnes still edible every day'],['2.9M','people could be fed three meals'],['0','cost to join FoodSaver']] as [$num,$label])
-        <div class="col-6 col-md-3">
-            <div style="font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--amber);line-height:1;">{{ $num }}</div>
-            <div style="color:rgba(255,255,255,.55);font-size:.78rem;margin-top:.35rem;line-height:1.4;">{{ $label }}</div>
+{{-- ── Stats strip ── --}}
+<div style="background:var(--forest);border-radius:16px;padding:3rem 2.5rem;margin:3.5rem 0;">
+    <div class="row g-4">
+        @foreach([
+            ['17,000', 'tonnes of food wasted in Malaysia daily'],
+            ['4,005',  'tonnes still edible every day'],
+            ['2.9M',   'people could be fed three meals'],
+            ['0',      'cost to join FoodSaver as a vendor or buyer'],
+        ] as [$num, $label])
+        <div class="col-6 col-md-3" style="border-right:1px solid rgba(255,255,255,.08);">
+            <div style="font-family:'DM Serif Display',serif;font-size:2.4rem;color:var(--amber);line-height:1;">{{ $num }}</div>
+            <div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-top:.4rem;line-height:1.5;font-family:'Outfit',sans-serif;">{{ $label }}</div>
         </div>
         @endforeach
     </div>
 </div>
 
-{{-- CTA --}}
-<div class="text-center pb-2">
-    <h2 class="page-heading" style="font-size:2rem;margin-bottom:.75rem;">Ready to make a difference?</h2>
-    <p style="color:var(--muted);margin-bottom:1.75rem;">Join as a vendor or buyer — it's completely free.</p>
-    <a href="{{ route('register') }}" class="btn btn-primary" style="padding:.8rem 2.5rem;font-size:1rem;">
-        Create your account
-    </a>
+{{-- ── CTA ── --}}
+<div style="padding:2rem 0 1rem;">
+    <div class="row align-items-center">
+        <div class="col-md-8">
+            <h2 class="page-heading" style="font-size:2rem;margin-bottom:.6rem;">Ready to make a difference?</h2>
+            <p style="color:var(--muted);margin:0;">Join as a vendor or buyer — it's completely free. No credit card required.</p>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+            <a href="{{ route('register') }}" class="btn btn-primary" style="padding:.85rem 2.5rem;font-size:1rem;">
+                Create your account
+            </a>
+        </div>
+    </div>
 </div>
+
 @endsection

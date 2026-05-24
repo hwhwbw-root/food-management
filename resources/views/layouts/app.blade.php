@@ -5,42 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'FoodSaver') — FoodSaver</title>
 
-    <!-- Fonts: DM Serif Display (display) + Plus Jakarta Sans (body) -->
+    {{-- Fonts: DM Serif Display (display/editorial) + Outfit (body — taste-approved) --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <style>
-        /* ── Design System ── */
+        /* ── Design Tokens ── */
         :root {
-            --forest:  #1B4332;
-            --forest-light: #2D6A4F;
-            --amber:   #D97706;
-            --amber-light: #F59E0B;
-            --cream:   #FAFAF7;
-            --dark:    #1C1917;
-            --muted:   #78716C;
-            --border:  #E7E5E4;
-            --white:   #FFFFFF;
-            --danger:  #DC2626;
-            --shadow:  0 2px 12px rgba(27,67,50,.10);
-            --shadow-hover: 0 8px 28px rgba(27,67,50,.16);
+            --forest:        #1B4332;
+            --forest-light:  #2D6A4F;
+            --amber:         #D97706;
+            --amber-light:   #F59E0B;
+            --cream:         #FAFAF7;
+            --dark:          #1C1917;   /* off-black — never pure #000 */
+            --muted:         #78716C;
+            --border:        #E7E5E4;
+            --white:         #FFFFFF;
+            --danger:        #DC2626;
+            --shadow:        0 2px 12px rgba(27,67,50,.08);
+            --shadow-hover:  0 8px 32px rgba(27,67,50,.14);
+            --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);  /* taste-skill Level 6 */
         }
 
         /* ── Base ── */
         *, *::before, *::after { box-sizing: border-box; }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Outfit', sans-serif;   /* taste-approved, replaces Plus Jakarta Sans */
             background-color: var(--cream);
             color: var(--dark);
             font-size: 15px;
             line-height: 1.6;
         }
 
+        /* DM Serif Display for editorial/display contexts only */
         h1, h2, h3, h4, h5, .display-font {
             font-family: 'DM Serif Display', serif;
             letter-spacing: -0.01em;
@@ -49,8 +51,11 @@
         /* ── Navbar ── */
         .navbar {
             background-color: var(--forest) !important;
-            padding: 0.9rem 0;
+            padding: 0.85rem 0;
             border-bottom: 3px solid var(--amber);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .navbar-brand {
@@ -60,38 +65,37 @@
             letter-spacing: -0.02em;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.35rem;
         }
 
-        .navbar-brand .brand-dot {
-            color: var(--amber);
-        }
+        .navbar-brand .brand-dot { color: var(--amber); }
 
         .navbar .nav-link {
-            color: rgba(255,255,255,.75) !important;
+            color: rgba(255,255,255,.7) !important;
             font-size: 0.875rem;
             font-weight: 500;
             padding: 0.4rem 0.8rem !important;
             border-radius: 6px;
-            transition: color .2s, background .2s;
+            transition: color 0.2s var(--ease-out), background 0.2s var(--ease-out);
         }
 
         .navbar .nav-link:hover {
             color: var(--white) !important;
-            background: rgba(255,255,255,.08);
+            background: rgba(255,255,255,.09);
         }
 
         .navbar .dropdown-menu {
             border: 1px solid var(--border);
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: var(--shadow-hover);
             padding: 0.4rem;
         }
 
         .navbar .dropdown-item {
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 0.875rem;
             padding: 0.5rem 0.9rem;
+            transition: background 0.15s var(--ease-out);
         }
 
         .btn-navbar-cta {
@@ -99,18 +103,16 @@
             color: var(--dark) !important;
             font-weight: 700;
             font-size: 0.8rem;
-            padding: 0.45rem 1rem;
+            padding: 0.45rem 1.1rem;
             border-radius: 8px;
             border: none;
-            transition: background .2s, transform .15s;
+            transition: background 0.25s var(--ease-out), transform 0.2s var(--ease-out);
             text-decoration: none;
+            display: inline-block;
         }
 
-        .btn-navbar-cta:hover {
-            background-color: var(--amber-light);
-            color: var(--dark) !important;
-            transform: translateY(-1px);
-        }
+        .btn-navbar-cta:hover  { background-color: var(--amber-light); transform: translateY(-1px); }
+        .btn-navbar-cta:active { transform: translateY(0) scale(0.98); }
 
         .user-badge {
             display: flex;
@@ -124,7 +126,7 @@
         /* ── Main ── */
         main.container {
             padding-top: 2.5rem;
-            padding-bottom: 3rem;
+            padding-bottom: 3.5rem;
             min-height: calc(100vh - 160px);
         }
 
@@ -134,41 +136,39 @@
             border-radius: 14px;
             box-shadow: var(--shadow);
             background: var(--white);
-            transition: box-shadow .2s, transform .2s;
+            transition: box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out);
         }
 
         .card:hover { box-shadow: var(--shadow-hover); }
 
-        /* ── Food Listing Cards (the memorable anchor) ── */
+        /* ── Food Listing Cards (amber left-border anchor) ── */
         .food-card {
             border-left: 4px solid var(--amber);
             border-radius: 14px;
             overflow: hidden;
-            transition: transform .2s, box-shadow .2s;
+            transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
         }
 
         .food-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-hover);
         }
 
         .food-card .price-tag {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.45rem;
             color: var(--forest);
             line-height: 1;
         }
 
-        .food-card .price-tag.free {
-            color: var(--amber);
-        }
+        .food-card .price-tag.free { color: var(--amber); }
 
         .food-card .card-img-top {
-            height: 180px;
+            height: 200px;
             object-fit: cover;
         }
 
-        /* ── Buttons ── */
+        /* ── Buttons — tactile :active feedback (taste-skill Rule 5) ── */
         .btn-primary {
             background-color: var(--forest);
             border-color: var(--forest);
@@ -176,7 +176,7 @@
             font-weight: 600;
             border-radius: 8px;
             padding: 0.5rem 1.25rem;
-            transition: background .2s, transform .15s;
+            transition: background 0.25s var(--ease-out), transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
         }
 
         .btn-primary:hover, .btn-primary:focus {
@@ -186,6 +186,8 @@
             transform: translateY(-1px);
         }
 
+        .btn-primary:active { transform: translateY(1px) scale(0.98); }
+
         .btn-amber {
             background-color: var(--amber);
             border: none;
@@ -193,40 +195,34 @@
             font-weight: 700;
             border-radius: 8px;
             padding: 0.5rem 1.25rem;
-            transition: background .2s, transform .15s;
+            display: inline-block;
+            transition: background 0.25s var(--ease-out), transform 0.2s var(--ease-out);
         }
 
-        .btn-amber:hover {
-            background-color: var(--amber-light);
-            color: var(--dark);
-            transform: translateY(-1px);
-        }
+        .btn-amber:hover  { background-color: var(--amber-light); color: var(--dark); transform: translateY(-1px); }
+        .btn-amber:active { transform: translateY(1px) scale(0.98); }
 
         .btn-outline-primary {
             border-color: var(--forest);
             color: var(--forest);
             font-weight: 600;
             border-radius: 8px;
+            transition: background 0.2s var(--ease-out), color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
         }
 
-        .btn-outline-primary:hover {
-            background-color: var(--forest);
-            border-color: var(--forest);
-            color: var(--white);
-        }
+        .btn-outline-primary:hover  { background-color: var(--forest); border-color: var(--forest); color: var(--white); }
+        .btn-outline-primary:active { transform: scale(0.98); }
 
         .btn-outline-secondary {
             border-color: var(--border);
             color: var(--muted);
             font-weight: 500;
             border-radius: 8px;
+            transition: background 0.2s var(--ease-out), color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
         }
 
-        .btn-outline-secondary:hover {
-            background-color: var(--cream);
-            border-color: var(--border);
-            color: var(--dark);
-        }
+        .btn-outline-secondary:hover  { background-color: var(--cream); border-color: var(--border); color: var(--dark); }
+        .btn-outline-secondary:active { transform: scale(0.98); }
 
         .btn-outline-danger {
             border-color: #FECACA;
@@ -234,15 +230,13 @@
             font-weight: 500;
             border-radius: 8px;
             font-size: 0.8rem;
+            transition: background 0.2s var(--ease-out), transform 0.2s var(--ease-out);
         }
 
-        .btn-outline-danger:hover {
-            background-color: #FEF2F2;
-            border-color: #FECACA;
-            color: var(--danger);
-        }
+        .btn-outline-danger:hover  { background-color: #FEF2F2; border-color: #FECACA; color: var(--danger); }
+        .btn-outline-danger:active { transform: scale(0.98); }
 
-        /* ── Badges ── */
+        /* ── Status Badges ── */
         .badge-available  { background: #DCFCE7; color: #166534; }
         .badge-reserved   { background: #FEF9C3; color: #854D0E; }
         .badge-claimed    { background: #DBEAFE; color: #1E40AF; }
@@ -257,12 +251,12 @@
 
         .status-badge {
             display: inline-block;
-            padding: 0.3rem 0.75rem;
+            padding: 0.28rem 0.75rem;
             border-radius: 999px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.05em;
         }
 
         /* ── Tables ── */
@@ -277,10 +271,10 @@
         .fs-table thead th {
             background: var(--cream);
             border-bottom: 2px solid var(--border);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.07em;
             color: var(--muted);
             padding: 0.9rem 1.1rem;
         }
@@ -294,14 +288,16 @@
         }
 
         .fs-table tbody tr:last-child td { border-bottom: none; }
-        .fs-table tbody tr:hover td { background: #F9FBF9; }
+        .fs-table tbody tr { transition: background 0.15s var(--ease-out); }
+        .fs-table tbody tr:hover td { background: #F7FBF8; }
 
         /* ── Forms ── */
         .form-label {
-            font-size: 0.8rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.78rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
             color: var(--muted);
             margin-bottom: 0.35rem;
         }
@@ -310,16 +306,16 @@
             border: 1.5px solid var(--border);
             border-radius: 9px;
             padding: 0.6rem 0.9rem;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: 0.9rem;
             background: var(--white);
             color: var(--dark);
-            transition: border-color .2s, box-shadow .2s;
+            transition: border-color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
         }
 
         .form-control:focus, .form-select:focus {
             border-color: var(--forest);
-            box-shadow: 0 0 0 3px rgba(27,67,50,.12);
+            box-shadow: 0 0 0 3px rgba(27,67,50,.1);
             outline: none;
         }
 
@@ -331,15 +327,8 @@
             font-weight: 500;
         }
 
-        .alert-success {
-            background: #DCFCE7;
-            color: #166534;
-        }
-
-        .alert-danger {
-            background: #FEE2E2;
-            color: #991B1B;
-        }
+        .alert-success { background: #DCFCE7; color: #166534; }
+        .alert-danger  { background: #FEE2E2; color: #991B1B; }
 
         /* ── Section headings ── */
         .page-heading {
@@ -353,42 +342,51 @@
             color: var(--muted);
             font-size: 0.875rem;
             margin-top: 0.25rem;
+            font-family: 'Outfit', sans-serif;
         }
 
-        /* ── Stat cards (admin) ── */
+        /* ── Stat cards (admin bento) ── */
         .stat-card {
             border-radius: 14px;
-            padding: 1.4rem 1.6rem;
+            padding: 1.5rem 1.75rem;
             border: 1px solid var(--border);
             background: var(--white);
             box-shadow: var(--shadow);
+            transition: box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out);
         }
+
+        .stat-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
 
         .stat-card .stat-value {
             font-family: 'DM Serif Display', serif;
-            font-size: 2.4rem;
+            font-size: 2.6rem;
+            line-height: 1;
+            color: var(--forest);
+        }
+
+        .stat-card .stat-value-lg {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.8rem;
             line-height: 1;
             color: var(--forest);
         }
 
         .stat-card .stat-label {
-            font-size: 0.75rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.72rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.07em;
             color: var(--muted);
-            margin-top: 0.3rem;
+            margin-top: 0.4rem;
         }
 
-        .stat-card .stat-icon {
-            font-size: 1.5rem;
-            color: var(--amber);
-        }
+        .stat-card .stat-icon { font-size: 1.4rem; color: var(--amber); }
 
         /* ── Empty state ── */
         .empty-state {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 4.5rem 2rem;
             color: var(--muted);
         }
 
@@ -396,17 +394,18 @@
             font-size: 3rem;
             color: var(--border);
             display: block;
-            margin-bottom: 1rem;
+            margin-bottom: 1.1rem;
         }
 
         /* ── Footer ── */
         footer {
             background: var(--forest);
-            color: rgba(255,255,255,.5);
-            font-size: 0.8rem;
+            color: rgba(255,255,255,.45);
+            font-size: 0.78rem;
             padding: 1.5rem 0;
             text-align: center;
             margin-top: 4rem;
+            font-family: 'Outfit', sans-serif;
         }
 
         footer span { color: var(--amber); }
@@ -418,6 +417,7 @@
             border-radius: 8px;
             margin: 0 2px;
             font-size: 0.875rem;
+            transition: background 0.2s var(--ease-out), color 0.2s var(--ease-out);
         }
 
         .pagination .page-item.active .page-link {
@@ -443,7 +443,7 @@
                 FoodSaver<span class="brand-dot">.</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
-                    style="color: rgba(255,255,255,.7);">
+                    style="color:rgba(255,255,255,.7);">
                 <i class="bi bi-list" style="font-size:1.4rem;"></i>
             </button>
             <div class="collapse navbar-collapse" id="navMenu">
@@ -484,7 +484,7 @@
                                 <li class="mt-1">
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
-                                        <button class="dropdown-item text-danger fw-600" type="submit">
+                                        <button class="dropdown-item text-danger" type="submit" style="font-weight:600;">
                                             <i class="bi bi-box-arrow-right me-2"></i>Logout
                                         </button>
                                     </form>
@@ -517,7 +517,7 @@
     </main>
 
     <footer>
-        &copy; {{ date('Y') }} <span>FoodSaver</span> — Reducing food waste in Malaysia &nbsp;·&nbsp; BIIT 2305
+        &copy; {{ date('Y') }} <span>FoodSaver</span> &nbsp;&mdash;&nbsp; Reducing food waste in Malaysia &nbsp;&middot;&nbsp; BIIT 2305
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
