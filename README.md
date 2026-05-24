@@ -282,7 +282,7 @@ Overall, this project is a practical technology solution that helps reduce envir
 
 ## 1.11 References
 
-Any references used for the proposal (Use APA format).
+Anon. (2022, February 15). Malaysia throws away 17,000 tonnes of food daily. The Malaysian Reserve. https://themalaysianreserve.com/2022/02/15/malaysia-throws-away-17000-tonnes-of-food-daily/
 
 ---
 
