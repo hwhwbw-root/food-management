@@ -284,6 +284,10 @@ Overall, this project is a practical technology solution that helps reduce envir
 
 Anon. (2022, February 15). Malaysia throws away 17,000 tonnes of food daily. The Malaysian Reserve. https://themalaysianreserve.com/2022/02/15/malaysia-throws-away-17000-tonnes-of-food-daily/
 
+Zainal, F. (2021, May 20). Daily food waste staggering. The Star. https://www.thestar.com.my/news/nation/2021/05/20/daily-food-waste-staggering
+
+The Lost Food Project. (n.d.). What we do. https://www.thelostfoodproject.org/what-we-do/
+
 ---
 
 > Repository: BIIT 2305 — Web Application Development | Section 5
