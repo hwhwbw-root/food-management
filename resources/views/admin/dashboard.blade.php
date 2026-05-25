@@ -16,7 +16,7 @@
 {{-- ── Bento top row: 2 large anchor stats ── --}}
 <div class="row g-3 mb-3">
     <div class="col-md-6">
-        <div class="stat-card" style="border-left:4px solid var(--amber);">
+        <div class="stat-card" style="background:var(--forest-tint);">
             <div class="d-flex justify-content-between align-items-start">
                 <div>
                     <div class="stat-value-lg">{{ $totalUsers }}</div>
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="stat-card" style="border-left:4px solid var(--forest);">
+        <div class="stat-card" style="background:var(--warning-bg);">
             <div class="d-flex justify-content-between align-items-start">
                 <div>
                     <div class="stat-value-lg">{{ $totalListings }}</div>
@@ -66,7 +66,7 @@
 
 <div class="row g-3">
     <div class="col-md-6">
-        <a href="{{ route('admin.users') }}" class="card p-4 text-decoration-none" style="display:block;border-left:4px solid var(--amber);transition:transform .25s cubic-bezier(0.16,1,0.3,1),box-shadow .25s cubic-bezier(0.16,1,0.3,1);">
+        <a href="{{ route('admin.users') }}" class="card p-4 text-decoration-none" style="display:block;transition:transform .25s cubic-bezier(0.16,1,0.3,1),box-shadow .25s cubic-bezier(0.16,1,0.3,1);">
             <div class="d-flex align-items-center gap-3">
                 <div style="width:48px;height:48px;border-radius:12px;background:var(--cream);display:flex;align-items:center;justify-content:center;border:1px solid var(--border);">
                     <i class="bi bi-people" style="color:var(--forest);font-size:1.3rem;"></i>
@@ -80,7 +80,7 @@
         </a>
     </div>
     <div class="col-md-6">
-        <a href="{{ route('admin.listings') }}" class="card p-4 text-decoration-none" style="display:block;border-left:4px solid var(--forest);transition:transform .25s cubic-bezier(0.16,1,0.3,1),box-shadow .25s cubic-bezier(0.16,1,0.3,1);">
+        <a href="{{ route('admin.listings') }}" class="card p-4 text-decoration-none" style="display:block;transition:transform .25s cubic-bezier(0.16,1,0.3,1),box-shadow .25s cubic-bezier(0.16,1,0.3,1);">
             <div class="d-flex align-items-center gap-3">
                 <div style="width:48px;height:48px;border-radius:12px;background:var(--cream);display:flex;align-items:center;justify-content:center;border:1px solid var(--border);">
                     <i class="bi bi-card-list" style="color:var(--forest);font-size:1.3rem;"></i>

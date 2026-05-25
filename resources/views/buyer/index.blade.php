@@ -93,7 +93,7 @@
                         </div>
 
                         @if($listing->expiry_time)
-                            <div style="font-size:.78rem;color:#B45309;background:#FEF3C7;border-radius:6px;padding:.25rem .6rem;display:inline-block;margin-bottom:.75rem;width:fit-content;">
+                            <div style="font-size:.78rem;color:var(--warning-text);background:var(--warning-bg);border-radius:6px;padding:.25rem .6rem;display:inline-block;margin-bottom:.75rem;width:fit-content;">
                                 <i class="bi bi-clock me-1"></i>Expires {{ $listing->expiry_time->format('d M, h:i A') }}
                             </div>
                         @endif
@@ -157,7 +157,7 @@
                         </div>
 
                         @if($listing->expiry_time)
-                            <div style="font-size:.75rem;color:#B45309;background:#FEF3C7;border-radius:6px;padding:.2rem .5rem;display:inline-block;margin-bottom:.6rem;width:fit-content;">
+                            <div style="font-size:.75rem;color:var(--warning-text);background:var(--warning-bg);border-radius:6px;padding:.2rem .5rem;display:inline-block;margin-bottom:.6rem;width:fit-content;">
                                 <i class="bi bi-clock me-1"></i>Expires {{ $listing->expiry_time->format('d M, h:i A') }}
                             </div>
                         @endif

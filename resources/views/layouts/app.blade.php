@@ -16,19 +16,22 @@
     <style>
         /* ── Design Tokens ── */
         :root {
-            --forest:        #1B4332;
-            --forest-light:  #2D6A4F;
-            --amber:         #D97706;
-            --amber-light:   #F59E0B;
-            --cream:         #FAFAF7;
-            --dark:          #1C1917;   /* off-black — never pure #000 */
-            --muted:         #78716C;
-            --border:        #E7E5E4;
-            --white:         #FFFFFF;
-            --danger:        #DC2626;
+            --forest:        oklch(28% 0.075 153);
+            --forest-light:  oklch(43% 0.087 152);
+            --amber:         oklch(64% 0.165 68);
+            --amber-light:   oklch(74% 0.177 74);
+            --cream:         oklch(99% 0.006 100);
+            --dark:          oklch(14% 0.009 46);
+            --muted:         oklch(51% 0.014 55);
+            --border:        oklch(92% 0.007 60);
+            --white:         oklch(99.5% 0.003 90);
+            --danger:        oklch(55% 0.22 27);
+            --warning-bg:    oklch(97% 0.06 85);
+            --warning-text:  oklch(46% 0.13 68);
+            --forest-tint:   oklch(96% 0.04 153);
             --shadow:        0 2px 12px rgba(27,67,50,.08);
             --shadow-hover:  0 8px 32px rgba(27,67,50,.14);
-            --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);  /* taste-skill Level 6 */
+            --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* ── Base ── */
@@ -141,9 +144,10 @@
 
         .card:hover { box-shadow: var(--shadow-hover); }
 
-        /* ── Food Listing Cards (amber left-border anchor) ── */
+        /* ── Food Listing Cards ── */
         .food-card {
-            border-left: 4px solid var(--amber);
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--amber);
             border-radius: 14px;
             overflow: hidden;
             transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
@@ -225,7 +229,7 @@
         .btn-outline-secondary:active { transform: scale(0.98); }
 
         .btn-outline-danger {
-            border-color: #FECACA;
+            border-color: oklch(87% 0.09 25);
             color: var(--danger);
             font-weight: 500;
             border-radius: 8px;
@@ -233,21 +237,21 @@
             transition: background 0.2s var(--ease-out), transform 0.2s var(--ease-out);
         }
 
-        .btn-outline-danger:hover  { background-color: #FEF2F2; border-color: #FECACA; color: var(--danger); }
+        .btn-outline-danger:hover  { background-color: oklch(96% 0.05 25); border-color: oklch(87% 0.09 25); color: var(--danger); }
         .btn-outline-danger:active { transform: scale(0.98); }
 
         /* ── Status Badges ── */
-        .badge-available  { background: #DCFCE7; color: #166534; }
-        .badge-reserved   { background: #FEF9C3; color: #854D0E; }
-        .badge-claimed    { background: #DBEAFE; color: #1E40AF; }
-        .badge-expired    { background: #F3F4F6; color: #6B7280; }
-        .badge-pending    { background: #FEF9C3; color: #854D0E; }
-        .badge-confirmed  { background: #DCFCE7; color: #166534; }
-        .badge-cancelled  { background: #FEE2E2; color: #991B1B; }
-        .badge-completed  { background: #DBEAFE; color: #1E40AF; }
-        .badge-vendor     { background: #D1FAE5; color: #065F46; }
-        .badge-buyer      { background: #DBEAFE; color: #1E40AF; }
-        .badge-admin      { background: #FEE2E2; color: #991B1B; }
+        .badge-available  { background: oklch(94% 0.06 153); color: oklch(38% 0.09 147); }
+        .badge-reserved   { background: oklch(97% 0.06 95);  color: oklch(44% 0.12 68); }
+        .badge-claimed    { background: oklch(94% 0.04 262); color: oklch(40% 0.15 270); }
+        .badge-expired    { background: oklch(96% 0.003 255); color: oklch(56% 0.01 255); }
+        .badge-pending    { background: oklch(97% 0.06 95);  color: oklch(44% 0.12 68); }
+        .badge-confirmed  { background: oklch(94% 0.06 153); color: oklch(38% 0.09 147); }
+        .badge-cancelled  { background: oklch(94% 0.07 25);  color: oklch(39% 0.17 25); }
+        .badge-completed  { background: oklch(94% 0.04 262); color: oklch(40% 0.15 270); }
+        .badge-vendor     { background: oklch(95% 0.07 153); color: oklch(32% 0.09 153); }
+        .badge-buyer      { background: oklch(94% 0.04 262); color: oklch(40% 0.15 270); }
+        .badge-admin      { background: oklch(94% 0.07 25);  color: oklch(39% 0.17 25); }
 
         .status-badge {
             display: inline-block;
@@ -289,7 +293,7 @@
 
         .fs-table tbody tr:last-child td { border-bottom: none; }
         .fs-table tbody tr { transition: background 0.15s var(--ease-out); }
-        .fs-table tbody tr:hover td { background: #F7FBF8; }
+        .fs-table tbody tr:hover td { background: oklch(98% 0.018 153); }
 
         /* ── Forms ── */
         .form-label {
@@ -327,8 +331,8 @@
             font-weight: 500;
         }
 
-        .alert-success { background: #DCFCE7; color: #166534; }
-        .alert-danger  { background: #FEE2E2; color: #991B1B; }
+        .alert-success { background: oklch(94% 0.06 153); color: oklch(38% 0.09 147); }
+        .alert-danger  { background: oklch(94% 0.07 25);  color: oklch(39% 0.17 25); }
 
         /* ── Section headings ── */
         .page-heading {

@@ -89,7 +89,7 @@
 <style>
     .btn-check:checked + label {
         border-color: var(--forest) !important;
-        background: #F0FDF4;
+        background: var(--forest-tint);
     }
 </style>
 @endsection

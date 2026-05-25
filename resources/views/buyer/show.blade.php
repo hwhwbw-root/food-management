@@ -61,7 +61,7 @@
 
                 @if($listing->expiry_time)
                 <dt style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);">Expires</dt>
-                <dd style="margin:0;color:#B45309;font-weight:600;">
+                <dd style="margin:0;color:var(--warning-text);font-weight:600;">
                     <i class="bi bi-clock me-1"></i>{{ $listing->expiry_time->format('d M Y, h:i A') }}
                 </dd>
                 @endif
