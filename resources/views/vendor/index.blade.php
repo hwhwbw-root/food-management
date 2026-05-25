@@ -16,7 +16,7 @@
 @if($listings->isEmpty())
     <div class="card empty-state">
         <i class="bi bi-inbox"></i>
-        <h5 style="color:var(--dark);font-family:'DM Serif Display',serif;">Nothing posted yet</h5>
+        <h5 style="color:var(--dark);font-family:'Bricolage Grotesque',sans-serif;">Nothing posted yet</h5>
         <p style="font-size:.875rem;">Start reducing waste by posting your first food listing.</p>
         <a href="{{ route('vendor.listings.create') }}" class="btn btn-primary mt-2" style="display:inline-block;">Post your first listing</a>
     </div>
@@ -55,7 +55,7 @@
                     <td style="font-weight:600;">{{ $listing->quantity }}</td>
                     <td>
                         @if($listing->price == 0)
-                            <span style="color:var(--amber);font-weight:800;font-family:'DM Serif Display',serif;font-size:1rem;">Free</span>
+                            <span style="color:var(--amber);font-weight:800;font-family:'Bricolage Grotesque',sans-serif;font-size:1rem;">Free</span>
                         @else
                             <span style="font-weight:700;color:var(--forest);">RM {{ number_format($listing->price, 2) }}</span>
                         @endif

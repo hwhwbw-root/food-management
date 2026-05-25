@@ -5,7 +5,7 @@
 @section('content')
 <div class="mb-4">
     <h1 class="page-heading">Browse Food</h1>
-    <p class="page-subheading">Fresh surplus from local businesses — reserve before it's gone</p>
+    <p class="page-subheading">Fresh surplus from local businesses. Reserve before it's gone.</p>
 </div>
 
 {{-- Filter bar --}}
@@ -41,7 +41,7 @@
 @if($listings->isEmpty())
     <div class="card empty-state">
         <i class="bi bi-search"></i>
-        <h5 style="color:var(--dark);font-family:'DM Serif Display',serif;">Nothing found</h5>
+        <h5 style="color:var(--dark);font-family:'Bricolage Grotesque',sans-serif;">Nothing found</h5>
         <p style="font-size:.875rem;">No food listings match your search right now. Check back soon!</p>
         @if(request()->hasAny(['search','category']))
             <a href="{{ route('buyer.listings.index') }}" class="btn btn-outline-secondary mt-2">Clear filters</a>
@@ -77,7 +77,7 @@
                             @endif
                         </div>
 
-                        <h2 style="font-family:'DM Serif Display',serif;font-size:1.75rem;color:var(--dark);margin-bottom:.5rem;line-height:1.2;">
+                        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.75rem;color:var(--dark);margin-bottom:.5rem;line-height:1.2;">
                             {{ $listing->title }}
                         </h2>
 
@@ -101,9 +101,9 @@
                         <div class="d-flex justify-content-between align-items-center mt-auto pt-3" style="border-top:1px solid var(--border);">
                             <div>
                                 @if($listing->price == 0)
-                                    <span class="price-tag free" style="font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--amber);">Free</span>
+                                    <span class="price-tag free" style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.8rem;color:var(--amber);">Free</span>
                                 @else
-                                    <span class="price-tag" style="font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--forest);">RM {{ number_format($listing->price, 2) }}</span>
+                                    <span class="price-tag" style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.8rem;color:var(--forest);">RM {{ number_format($listing->price, 2) }}</span>
                                 @endif
                                 <div style="font-size:.75rem;color:var(--muted);">{{ $listing->quantity }} available</div>
                             </div>

@@ -8,8 +8,8 @@
 
         <div class="text-center mb-4">
             <i class="bi bi-leaf-fill" style="color:var(--amber);font-size:2rem;"></i>
-            <h2 style="font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--forest);margin:.4rem 0 .25rem;">Join FoodSaver.</h2>
-            <p style="color:var(--muted);font-size:.875rem;">Create a free account — takes less than a minute</p>
+            <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.9rem;font-weight:700;color:var(--forest);margin:.4rem 0 .25rem;letter-spacing:-0.02em;">Join FoodSaver.</h2>
+            <p style="color:var(--muted);font-size:.875rem;">Create a free account. Takes less than a minute.</p>
         </div>
 
         @if($errors->any())

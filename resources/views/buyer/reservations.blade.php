@@ -16,7 +16,7 @@
 @if($reservations->isEmpty())
     <div class="card empty-state">
         <i class="bi bi-bookmark"></i>
-        <h5 style="color:var(--dark);font-family:'DM Serif Display',serif;">No reservations yet</h5>
+        <h5 style="color:var(--dark);font-family:'Bricolage Grotesque',sans-serif;">No reservations yet</h5>
         <p style="font-size:.875rem;">Browse available food listings and reserve what you need.</p>
         <a href="{{ route('buyer.listings.index') }}" class="btn btn-primary mt-2">Browse Food</a>
     </div>

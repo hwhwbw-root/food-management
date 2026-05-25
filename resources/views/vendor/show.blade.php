@@ -47,9 +47,9 @@
                 <dt style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);">Price</dt>
                 <dd style="margin:0;">
                     @if($listing->price == 0)
-                        <span style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--amber);">Free</span>
+                        <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;color:var(--amber);">Free</span>
                     @else
-                        <span style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--forest);">RM {{ number_format($listing->price, 2) }}</span>
+                        <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;color:var(--forest);">RM {{ number_format($listing->price, 2) }}</span>
                     @endif
                 </dd>
 
@@ -82,7 +82,7 @@
 @if($listing->reservations->isEmpty())
     <div class="card empty-state">
         <i class="bi bi-bookmark"></i>
-        <h5 style="color:var(--dark);font-family:'DM Serif Display',serif;">No reservations yet</h5>
+        <h5 style="color:var(--dark);font-family:'Bricolage Grotesque',sans-serif;">No reservations yet</h5>
         <p style="font-size:.875rem;">Buyers will appear here once they reserve this listing.</p>
     </div>
 @else
