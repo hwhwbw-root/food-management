@@ -77,7 +77,6 @@
 @foreach([
     ['bi-shop-window', 'For Vendors', 'Post surplus food listings in minutes. Set quantity, price, and pickup time. Recover costs, reduce waste, and improve your business reputation in the community.', false],
     ['bi-bag-heart',   'For Buyers',  'Browse real-time listings from local businesses. Filter by category, reserve your food, and collect at pickup. Affordable meals, zero hassle.',               true],
-    ['bi-shield-check','For Admins',  'Monitor platform health, manage users and listings, and ensure content quality. Keep FoodSaver trustworthy and safe for everyone.',                          false],
 ] as [$icon, $title, $desc, $flip])
 <div class="row align-items-center g-4 g-lg-5 mb-5 {{ $flip ? 'flex-lg-row-reverse' : '' }}" style="padding:2rem 0;">
     <div class="col-lg-5">
