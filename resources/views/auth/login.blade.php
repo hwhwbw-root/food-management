@@ -8,7 +8,7 @@
 
         <div class="text-center mb-4">
             <i class="bi bi-leaf-fill" style="color:var(--amber);font-size:2rem;"></i>
-            <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.9rem;font-weight:700;color:var(--forest);margin:.4rem 0 .25rem;letter-spacing:-0.02em;">Welcome back.</h2>
+            <h2 style="font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--forest);margin:.4rem 0 .25rem;">Welcome back.</h2>
             <p style="color:var(--muted);font-size:.875rem;">Log in to your FoodSaver account</p>
         </div>
 

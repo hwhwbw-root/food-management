@@ -44,9 +44,9 @@
                 <dt style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);">Price</dt>
                 <dd style="margin:0;">
                     @if($listing->price == 0)
-                        <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.6rem;color:var(--amber);">Free</span>
+                        <span style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--amber);">Free</span>
                     @else
-                        <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.6rem;color:var(--forest);">RM {{ number_format($listing->price, 2) }}</span>
+                        <span style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--forest);">RM {{ number_format($listing->price, 2) }}</span>
                     @endif
                 </dd>
 
@@ -76,7 +76,7 @@
             </form>
 
             <p style="font-size:.75rem;color:var(--muted);text-align:center;margin-top:.75rem;margin-bottom:0;">
-                Reservation is free. No payment required upfront.
+                Reservation is free — no payment required upfront.
             </p>
         </div>
     </div>

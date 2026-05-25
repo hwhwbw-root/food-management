@@ -44,7 +44,7 @@
                         <input type="number" name="quantity" class="form-control" value="{{ old('quantity', 1) }}" min="1" required>
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label">Price (RM, 0 = Free) <span style="color:var(--danger);">*</span></label>
+                        <label class="form-label">Price (RM) — 0 = Free <span style="color:var(--danger);">*</span></label>
                         <input type="number" name="price" class="form-control" value="{{ old('price', 0) }}" min="0" step="0.01" required>
                     </div>
                     <div class="col-md-4">

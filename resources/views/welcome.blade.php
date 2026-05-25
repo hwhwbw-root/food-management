@@ -19,39 +19,46 @@
                     BIIT 2305 &middot; Web Application Development
                 </div>
 
-                <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2.8rem,5vw,4.4rem);font-weight:800;color:var(--white);line-height:1.05;margin-bottom:1.4rem;text-align:left;letter-spacing:-0.04em;">
+                <h1 style="font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,5vw,4.4rem);color:var(--white);line-height:1.05;margin-bottom:1.4rem;text-align:left;">
                     Less Waste.<br>
-                    <span style="color:var(--amber);">More Meals.</span>
+                    <em style="color:var(--amber);">More Meals.</em>
                 </h1>
 
-                <p style="color:oklch(99.5% 0.003 90 / 0.68);font-size:1rem;max-width:440px;margin-bottom:2.5rem;line-height:1.75;text-align:left;">
-                    FoodSaver connects Malaysian food businesses with people who need affordable food, reducing waste one listing at a time.
+                <p style="color:rgba(255,255,255,.68);font-size:1rem;max-width:440px;margin-bottom:2.5rem;line-height:1.75;text-align:left;">
+                    FoodSaver connects Malaysian food businesses with people who need affordable food — reducing waste, one listing at a time.
                 </p>
 
                 <div class="d-flex flex-wrap gap-3 align-items-center">
                     <a href="{{ route('register') }}" class="btn-amber" style="padding:.8rem 2.1rem;font-size:.95rem;border-radius:10px;text-decoration:none;">
                         Get Started Free
                     </a>
-                    <a href="{{ route('login') }}" style="color:oklch(99.5% 0.003 90 / 0.7);font-size:.9rem;font-weight:500;display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;">
+                    <a href="{{ route('login') }}" style="color:rgba(255,255,255,.7);font-size:.9rem;font-weight:500;display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;">
                         Already have an account <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
             </div>
 
-            {{-- Right: typographic facts, no cards --}}
-            <div class="col-lg-5 offset-lg-1 d-none d-lg-flex flex-column justify-content-center" style="padding-top:1rem;">
-                <div style="padding:1.5rem 0;border-bottom:1px solid oklch(99.5% 0.003 90 / 0.12);">
-                    <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:3.2rem;font-weight:800;color:var(--white);line-height:1;letter-spacing:-0.04em;">17,000t</div>
-                    <div style="color:oklch(99.5% 0.003 90 / 0.55);font-size:.875rem;margin-top:.4rem;line-height:1.5;">food wasted in Malaysia every day</div>
+            {{-- Right: staggered stat cards --}}
+            <div class="col-lg-5 offset-lg-1 d-none d-lg-flex flex-column gap-3" style="padding-top:1.5rem;">
+
+                <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:1.4rem;backdrop-filter:blur(6px);align-self:flex-start;width:240px;">
+                    <i class="bi bi-shop-window" style="color:var(--amber);font-size:1.3rem;"></i>
+                    <div style="font-family:'DM Serif Display',serif;font-size:2rem;color:var(--white);margin-top:.5rem;line-height:1;">17,000</div>
+                    <div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-top:.25rem;line-height:1.4;">tonnes of food wasted in Malaysia daily</div>
                 </div>
-                <div style="padding:1.5rem 0;border-bottom:1px solid oklch(99.5% 0.003 90 / 0.12);">
-                    <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:3.2rem;font-weight:800;color:var(--amber);line-height:1;letter-spacing:-0.04em;">2.9M</div>
-                    <div style="color:oklch(99.5% 0.003 90 / 0.55);font-size:.875rem;margin-top:.4rem;line-height:1.5;">people could be fed three meals daily from that surplus</div>
+
+                <div style="background:rgba(217,119,6,.18);border:1px solid rgba(217,119,6,.35);border-radius:16px;padding:1.3rem;align-self:flex-end;width:210px;margin-top:-1rem;">
+                    <i class="bi bi-currency-dollar" style="color:var(--amber);font-size:1.3rem;"></i>
+                    <div style="font-family:'DM Serif Display',serif;font-size:2rem;color:var(--white);margin-top:.5rem;line-height:1;">Free</div>
+                    <div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-top:.25rem;line-height:1.4;">to join and list food surplus</div>
                 </div>
-                <div style="padding:1.5rem 0;">
-                    <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:3.2rem;font-weight:800;color:var(--white);line-height:1;letter-spacing:-0.04em;">Free</div>
-                    <div style="color:oklch(99.5% 0.003 90 / 0.55);font-size:.875rem;margin-top:.4rem;line-height:1.5;">to list surplus or reserve affordable food</div>
+
+                <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:1.4rem;align-self:flex-start;width:260px;margin-left:20px;">
+                    <i class="bi bi-people-fill" style="color:var(--amber);font-size:1.3rem;"></i>
+                    <div style="font-family:'DM Serif Display',serif;font-size:2rem;color:var(--white);margin-top:.5rem;line-height:1;">2.9M</div>
+                    <div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-top:.25rem;line-height:1.4;">people could be fed three meals from daily surplus</div>
                 </div>
+
             </div>
 
         </div>
@@ -62,34 +69,27 @@
 
 {{-- How it works: zig-zag layout --}}
 <div style="padding:3.5rem 0 1rem;">
-    <p style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem;">How it works</p>
+    <p style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem;font-family:'Outfit',sans-serif;">How it works</p>
     <h2 class="page-heading" style="font-size:2.2rem;margin-bottom:.5rem;">Simple for everyone.</h2>
-    <p style="color:var(--muted);font-size:.9rem;max-width:480px;">Three roles, one mission: get surplus food from those who have it to those who need it.</p>
+    <p style="color:var(--muted);font-size:.9rem;max-width:480px;">Three roles, one mission — get surplus food from those who have it to those who need it.</p>
 </div>
-
-@php
-$featurePanels = [
-    0 => ['bg' => 'var(--forest)',  'ic' => 'var(--amber)',  'tc' => 'oklch(99.5% 0.003 90)'],
-    1 => ['bg' => 'var(--amber)',   'ic' => 'var(--dark)',   'tc' => 'var(--dark)'],
-    2 => ['bg' => 'var(--dark)',    'ic' => 'var(--amber)',  'tc' => 'oklch(99.5% 0.003 90)'],
-];
-@endphp
 
 @foreach([
     ['bi-shop-window', 'For Vendors', 'Post surplus food listings in minutes. Set quantity, price, and pickup time. Recover costs, reduce waste, and improve your business reputation in the community.', false],
     ['bi-bag-heart',   'For Buyers',  'Browse real-time listings from local businesses. Filter by category, reserve your food, and collect at pickup. Affordable meals, zero hassle.',               true],
     ['bi-shield-check','For Admins',  'Monitor platform health, manage users and listings, and ensure content quality. Keep FoodSaver trustworthy and safe for everyone.',                          false],
-] as $idx => [$icon, $title, $desc, $flip])
-@php $p = $featurePanels[$idx]; @endphp
+] as [$icon, $title, $desc, $flip])
 <div class="row align-items-center g-4 g-lg-5 mb-5 {{ $flip ? 'flex-lg-row-reverse' : '' }}" style="padding:2rem 0;">
     <div class="col-lg-5">
-        <div style="border-radius:14px;background:{{ $p['bg'] }};padding:2.5rem 2.5rem 2rem;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;">
-            <i class="bi {{ $icon }}" style="font-size:3rem;color:{{ $p['ic'] }};margin-bottom:1.1rem;display:block;"></i>
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.15rem;color:{{ $p['tc'] }};letter-spacing:-0.01em;">{{ $title }}</div>
+        <div class="card food-card p-5" style="min-height:200px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.75rem;background:var(--cream);">
+            <div style="width:60px;height:60px;border-radius:16px;background:var(--white);display:flex;align-items:center;justify-content:center;border:1px solid var(--border);box-shadow:var(--shadow);">
+                <i class="bi {{ $icon }}" style="color:var(--forest);font-size:1.7rem;"></i>
+            </div>
+            <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--forest);">{{ $title }}</div>
         </div>
     </div>
     <div class="col-lg-7 {{ $flip ? 'pe-lg-5' : 'ps-lg-5' }}">
-        <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.9rem;font-weight:700;color:var(--forest);margin-bottom:.75rem;letter-spacing:-0.02em;">{{ $title }}</h3>
+        <h3 style="font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--forest);margin-bottom:.75rem;">{{ $title }}</h3>
         <p style="color:var(--muted);font-size:.95rem;line-height:1.75;margin-bottom:1.5rem;max-width:480px;">{{ $desc }}</p>
         <a href="{{ route('register') }}" class="btn btn-outline-primary btn-sm" style="padding:.5rem 1.25rem;">
             Get started <i class="bi bi-arrow-right ms-1"></i>
@@ -109,8 +109,8 @@ $featurePanels = [
             ['0',      'cost to join FoodSaver'],
         ] as [$num, $label])
         <div class="col-6 col-md-3">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:2.4rem;color:var(--amber);line-height:1;letter-spacing:-0.03em;">{{ $num }}</div>
-            <div style="color:oklch(99.5% 0.003 90 / 0.5);font-size:.78rem;margin-top:.4rem;line-height:1.5;">{{ $label }}</div>
+            <div style="font-family:'DM Serif Display',serif;font-size:2.4rem;color:var(--amber);line-height:1;">{{ $num }}</div>
+            <div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-top:.4rem;line-height:1.5;font-family:'Outfit',sans-serif;">{{ $label }}</div>
         </div>
         @endforeach
     </div>
@@ -121,7 +121,7 @@ $featurePanels = [
     <div class="row align-items-center">
         <div class="col-md-8">
             <h2 class="page-heading" style="font-size:2rem;margin-bottom:.6rem;">Ready to make a difference?</h2>
-            <p style="color:var(--muted);margin:0;">Join as a vendor or buyer. It's completely free. No credit card required.</p>
+            <p style="color:var(--muted);margin:0;">Join as a vendor or buyer — it's completely free. No credit card required.</p>
         </div>
         <div class="col-md-4 text-md-end mt-3 mt-md-0">
             <a href="{{ route('register') }}" class="btn btn-primary" style="padding:.85rem 2.5rem;font-size:1rem;">

@@ -44,7 +44,7 @@
                 </td>
                 <td>
                     @if($listing->price == 0)
-                        <span style="color:var(--amber);font-weight:800;font-family:'Bricolage Grotesque',sans-serif;">Free</span>
+                        <span style="color:var(--amber);font-weight:800;font-family:'DM Serif Display',serif;">Free</span>
                     @else
                         <span style="font-weight:700;color:var(--forest);">RM {{ number_format($listing->price, 2) }}</span>
                     @endif
