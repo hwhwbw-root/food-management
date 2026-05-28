@@ -15,11 +15,7 @@
 
             {{-- Left: text content --}}
             <div class="col-lg-6">
-                <div style="display:inline-block;background:var(--amber);color:var(--dark);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .9rem;border-radius:4px;margin-bottom:1.5rem;">
-                    BIIT 2305 &middot; Web Application Development
-                </div>
-
-                <h1 style="font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,5vw,4.4rem);color:var(--white);line-height:1.05;margin-bottom:1.4rem;text-align:left;">
+<h1 style="font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,5vw,4.4rem);color:var(--white);line-height:1.05;margin-bottom:1.4rem;text-align:left;">
                     Less Waste.<br>
                     <em style="color:var(--amber);">More Meals.</em>
                 </h1>

@@ -52,6 +52,18 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+        // Test user
+        User::firstOrCreate(
+            ['email' => 'test@foodsaver.my'],
+            [
+                'name'     => 'Test User',
+                'password' => Hash::make('test1234'),
+                'role'     => 'buyer',
+                'phone'    => '0111234567',
+                'address'  => 'Shah Alam, Selangor',
+            ]
+        );
+
         // Mock vendor accounts
         $vendors = [
             [
