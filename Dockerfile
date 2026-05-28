@@ -11,8 +11,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
-    && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+    && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf \
+    && sed -ri -e 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
 
 WORKDIR /var/www/html
 
@@ -25,4 +27,4 @@ RUN composer install --no-dev --optimize-autoloader \
 
 EXPOSE 80
 
-CMD php artisan migrate --seed --force && php artisan storage:link && apache2-foreground
+CMD php artisan migrate --seed --force ; php artisan storage:link ; apache2-foreground
