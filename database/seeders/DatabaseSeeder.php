@@ -110,7 +110,7 @@ class DatabaseSeeder extends Seeder
                 'quantity'        => 10,
                 'price'           => 1.50,
                 'pickup_location' => 'Jalan Tuanku Abdul Halim, KL',
-                'expiry_time'     => now()->addHours(6),
+                'expiry_time'     => now()->addDays(3),
                 'status'          => 'available',
             ],
             [
@@ -121,7 +121,7 @@ class DatabaseSeeder extends Seeder
                 'quantity'        => 5,
                 'price'           => 0,
                 'pickup_location' => 'Jalan Tuanku Abdul Halim, KL',
-                'expiry_time'     => now()->addHours(3),
+                'expiry_time'     => now()->addDays(3),
                 'status'          => 'available',
             ],
             // Roti Canai Pak Man
@@ -133,7 +133,7 @@ class DatabaseSeeder extends Seeder
                 'quantity'        => 20,
                 'price'           => 0.50,
                 'pickup_location' => 'Pasar Pagi Wangsa Maju, KL',
-                'expiry_time'     => now()->addHours(4),
+                'expiry_time'     => now()->addDays(3),
                 'status'          => 'available',
             ],
             [
@@ -144,7 +144,7 @@ class DatabaseSeeder extends Seeder
                 'quantity'        => 8,
                 'price'           => 1.00,
                 'pickup_location' => 'Pasar Pagi Wangsa Maju, KL',
-                'expiry_time'     => now()->addHours(5),
+                'expiry_time'     => now()->addDays(3),
                 'status'          => 'available',
             ],
             // Kedai Kek Mira
@@ -156,7 +156,7 @@ class DatabaseSeeder extends Seeder
                 'quantity'        => 1,
                 'price'           => 5.00,
                 'pickup_location' => 'SS15, Subang Jaya, Selangor',
-                'expiry_time'     => now()->addDays(1),
+                'expiry_time'     => now()->addDays(3),
                 'status'          => 'available',
             ],
             [
@@ -167,7 +167,7 @@ class DatabaseSeeder extends Seeder
                 'quantity'        => 12,
                 'price'           => 3.00,
                 'pickup_location' => 'SS15, Subang Jaya, Selangor',
-                'expiry_time'     => now()->addHours(10),
+                'expiry_time'     => now()->addDays(3),
                 'status'          => 'available',
             ],
             // Katering Ibu Zainab
@@ -179,7 +179,7 @@ class DatabaseSeeder extends Seeder
                 'quantity'        => 15,
                 'price'           => 0,
                 'pickup_location' => 'Bandar Baru Bangi, Selangor',
-                'expiry_time'     => now()->addHours(5),
+                'expiry_time'     => now()->addDays(3),
                 'status'          => 'available',
             ],
             [
@@ -190,7 +190,7 @@ class DatabaseSeeder extends Seeder
                 'quantity'        => 10,
                 'price'           => 0,
                 'pickup_location' => 'Bandar Baru Bangi, Selangor',
-                'expiry_time'     => now()->addHours(4),
+                'expiry_time'     => now()->addDays(3),
                 'status'          => 'available',
             ],
             // Hotel Seri Melayu F&B
@@ -202,7 +202,7 @@ class DatabaseSeeder extends Seeder
                 'quantity'        => 30,
                 'price'           => 0,
                 'pickup_location' => 'Jalan Conlay, Kuala Lumpur',
-                'expiry_time'     => now()->addHours(8),
+                'expiry_time'     => now()->addDays(3),
                 'status'          => 'available',
             ],
             [
@@ -213,7 +213,7 @@ class DatabaseSeeder extends Seeder
                 'quantity'        => 5,
                 'price'           => 2.00,
                 'pickup_location' => 'Jalan Conlay, Kuala Lumpur',
-                'expiry_time'     => now()->addHours(6),
+                'expiry_time'     => now()->addDays(3),
                 'status'          => 'available',
             ],
         ];
@@ -222,7 +222,7 @@ class DatabaseSeeder extends Seeder
             $vendor   = User::where('email', $l['vendor_email'])->first();
             $category = Category::where('name', $l['category'])->first();
 
-            FoodListing::firstOrCreate(
+            FoodListing::updateOrCreate(
                 ['vendor_id' => $vendor->id, 'title' => $l['title']],
                 [
                     'category_id'     => $category?->id,
