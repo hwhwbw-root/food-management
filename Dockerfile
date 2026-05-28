@@ -1,21 +1,15 @@
-FROM php:8.2-apache
+FROM php:8.2-fpm
 
 RUN apt-get update && apt-get install -y \
-    libzip-dev zip unzip \
+    libzip-dev zip unzip nginx \
     && docker-php-ext-install pdo pdo_mysql zip \
-    && a2dismod mpm_event \
-    && a2enmod mpm_prefork rewrite
+    && rm -rf /var/lib/apt/lists/*
 
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs
+    && apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-
-ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
-
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
-    && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf \
-    && sed -ri -e 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
 
 WORKDIR /var/www/html
 
@@ -24,8 +18,12 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader \
     && npm install \
     && npm run build \
-    && chown -R www-data:www-data storage bootstrap/cache
+    && chown -R www-data:www-data storage bootstrap/cache public
+
+COPY docker/nginx.conf /etc/nginx/sites-available/default
+COPY docker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 EXPOSE 80
 
-CMD php artisan migrate --seed --force ; php artisan storage:link ; apache2-foreground
+ENTRYPOINT ["/entrypoint.sh"]
