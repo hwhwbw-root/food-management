@@ -18,16 +18,16 @@
         :root {
             --forest:        oklch(28% 0.075 153);
             --forest-light:  oklch(43% 0.087 152);
-            --amber:         oklch(64% 0.165 68);
-            --amber-light:   oklch(74% 0.177 74);
-            --cream:         oklch(99% 0.006 100);
+            --amber:         oklch(48% 0.14 145);
+            --amber-light:   oklch(58% 0.13 145);
+            --cream:         #ffffff;
             --dark:          oklch(14% 0.009 46);
-            --muted:         oklch(51% 0.014 55);
-            --border:        oklch(92% 0.007 60);
-            --white:         oklch(99.5% 0.003 90);
+            --muted:         oklch(55% 0.008 0);
+            --border:        oklch(93% 0.003 0);
+            --white:         #ffffff;
             --danger:        oklch(55% 0.22 27);
-            --warning-bg:    oklch(97% 0.06 85);
-            --warning-text:  oklch(46% 0.13 68);
+            --warning-bg:    oklch(96% 0.04 145);
+            --warning-text:  oklch(40% 0.12 145);
             --forest-tint:   oklch(96% 0.04 153);
             --shadow:        0 2px 12px rgba(27,67,50,.08);
             --shadow-hover:  0 8px 32px rgba(27,67,50,.14);
@@ -103,7 +103,7 @@
 
         .btn-navbar-cta {
             background-color: var(--amber);
-            color: var(--dark) !important;
+            color: #ffffff !important;
             font-weight: 700;
             font-size: 0.8rem;
             padding: 0.45rem 1.1rem;
@@ -195,7 +195,7 @@
         .btn-amber {
             background-color: var(--amber);
             border: none;
-            color: var(--dark);
+            color: #ffffff;
             font-weight: 700;
             border-radius: 8px;
             padding: 0.5rem 1.25rem;
@@ -203,7 +203,7 @@
             transition: background 0.25s var(--ease-out), transform 0.2s var(--ease-out);
         }
 
-        .btn-amber:hover  { background-color: var(--amber-light); color: var(--dark); transform: translateY(-1px); }
+        .btn-amber:hover  { background-color: var(--amber-light); color: #ffffff; transform: translateY(-1px); }
         .btn-amber:active { transform: translateY(1px) scale(0.98); }
 
         .btn-outline-primary {
@@ -476,7 +476,7 @@
 
                         <li class="nav-item dropdown ms-2">
                             <a class="nav-link dropdown-toggle user-badge" href="#" data-bs-toggle="dropdown">
-                                <span style="width:30px;height:30px;border-radius:50%;background:var(--amber);display:inline-flex;align-items:center;justify-content:center;color:var(--dark);font-weight:700;font-size:.75rem;">
+                                <span style="width:30px;height:30px;border-radius:50%;background:var(--amber);display:inline-flex;align-items:center;justify-content:center;color:#ffffff;font-weight:700;font-size:.75rem;">
                                     {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                                 </span>
                                 {{ explode(' ', auth()->user()->name)[0] }}
