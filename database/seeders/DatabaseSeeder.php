@@ -253,6 +253,7 @@ class DatabaseSeeder extends Seeder
                     'price'           => $l['price'],
                     'pickup_location' => $l['pickup_location'],
                     'expiry_time'     => $l['expiry_time'],
+                    'image'           => $l['image'] ?? null,
                     'status'          => $l['status'],
                 ]
             );
