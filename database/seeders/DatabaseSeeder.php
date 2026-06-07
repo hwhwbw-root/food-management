@@ -123,6 +123,7 @@ class DatabaseSeeder extends Seeder
                 'price'           => 1.50,
                 'pickup_location' => 'Jalan Tuanku Abdul Halim, KL',
                 'expiry_time'     => now()->addDays(3),
+                'image'           => 'images/food/nasi-lemak.jpg',
                 'status'          => 'available',
             ],
             [
@@ -134,6 +135,7 @@ class DatabaseSeeder extends Seeder
                 'price'           => 0,
                 'pickup_location' => 'Jalan Tuanku Abdul Halim, KL',
                 'expiry_time'     => now()->addDays(3),
+                'image'           => 'images/food/mee-goreng.jpg',
                 'status'          => 'available',
             ],
             // Roti Canai Pak Man
@@ -146,6 +148,7 @@ class DatabaseSeeder extends Seeder
                 'price'           => 0.50,
                 'pickup_location' => 'Pasar Pagi Wangsa Maju, KL',
                 'expiry_time'     => now()->addDays(3),
+                'image'           => 'images/food/roti-canai.jpg',
                 'status'          => 'available',
             ],
             [
@@ -157,6 +160,7 @@ class DatabaseSeeder extends Seeder
                 'price'           => 1.00,
                 'pickup_location' => 'Pasar Pagi Wangsa Maju, KL',
                 'expiry_time'     => now()->addDays(3),
+                'image'           => 'images/food/tosai.jpg',
                 'status'          => 'available',
             ],
             // Kedai Kek Mira
@@ -169,6 +173,7 @@ class DatabaseSeeder extends Seeder
                 'price'           => 5.00,
                 'pickup_location' => 'SS15, Subang Jaya, Selangor',
                 'expiry_time'     => now()->addDays(3),
+                'image'           => 'images/food/kek-batik.jpg',
                 'status'          => 'available',
             ],
             [
@@ -180,6 +185,7 @@ class DatabaseSeeder extends Seeder
                 'price'           => 3.00,
                 'pickup_location' => 'SS15, Subang Jaya, Selangor',
                 'expiry_time'     => now()->addDays(3),
+                'image'           => 'images/food/cupcakes.jpg',
                 'status'          => 'available',
             ],
             // Katering Ibu Zainab
@@ -192,6 +198,7 @@ class DatabaseSeeder extends Seeder
                 'price'           => 0,
                 'pickup_location' => 'Bandar Baru Bangi, Selangor',
                 'expiry_time'     => now()->addDays(3),
+                'image'           => 'images/food/ayam-masak-merah.jpg',
                 'status'          => 'available',
             ],
             [
@@ -203,6 +210,7 @@ class DatabaseSeeder extends Seeder
                 'price'           => 0,
                 'pickup_location' => 'Bandar Baru Bangi, Selangor',
                 'expiry_time'     => now()->addDays(3),
+                'image'           => 'images/food/sayur-lodeh.jpg',
                 'status'          => 'available',
             ],
             // Hotel Seri Melayu F&B
@@ -215,6 +223,7 @@ class DatabaseSeeder extends Seeder
                 'price'           => 0,
                 'pickup_location' => 'Jalan Conlay, Kuala Lumpur',
                 'expiry_time'     => now()->addDays(3),
+                'image'           => 'images/food/bread-basket.jpg',
                 'status'          => 'available',
             ],
             [
@@ -226,6 +235,7 @@ class DatabaseSeeder extends Seeder
                 'price'           => 2.00,
                 'pickup_location' => 'Jalan Conlay, Kuala Lumpur',
                 'expiry_time'     => now()->addDays(3),
+                'image'           => 'images/food/fruit-platter.jpg',
                 'status'          => 'available',
             ],
         ];
