@@ -1,4 +1,4 @@
-# 🍱 FoodSaver — Management Web Application for Food Leftovers
+# FoodSaver — Management Web Application for Food Leftovers
 
 **KULLIYYAH OF INFORMATION TECHNOLOGY AND COMMUNICATION**
 **INTERNATIONAL ISLAMIC UNIVERSITY MALAYSIA (IIUM)**
