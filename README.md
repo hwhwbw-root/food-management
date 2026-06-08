@@ -1,294 +1,549 @@
-# FoodSaver — Management Web Application for Food Leftovers
+# 🍱 FoodSaver — Management Web Application for Food Leftovers
 
-> A Laravel-based web application connecting food vendors with consumers to reduce food waste in Malaysia.
+**KULLIYYAH OF INFORMATION TECHNOLOGY AND COMMUNICATION**
+**INTERNATIONAL ISLAMIC UNIVERSITY MALAYSIA (IIUM)**
+
+| | |
+|---|---|
+| **Course** | WEB APPLICATION DEVELOPMENT (BIIT 2305) |
+| **Semester** | II, 2025/2026 |
+| **Section** | 5 |
+| **Instructor** | DR. NAJHAN BIN MUHAMAD IBRAHIM |
+| **Live Website** | https://food-management-production.up.railway.app/ |
 
 ---
 
 ## Group Members
 
-**Course:** BIIT 2305 — Web Application Development
-**Section:** 5
-**Instructor:** Dr. Najhan bin Muhamad Ibrahim
-
-1. Azizul Hakim bin Awang Abdul Rahim — 2419087
-2. Muhammad Farihin bin Johar — 2410499
-3. Nadhiratul Insyirah binti Esmadi — 2411198
-4. Naufa binti Mohd Yazid — 2413304
+| Name | Matric Number |
+|---|---|
+| AZIZUL HAKIM BIN AWANG ABDUL RAHIM | 2419087 |
+| MUHAMMAD FARIHIN BIN JOHAR | 2410499 |
+| NADHIRATUL INSYIRAH BINTI ESMADI | 2411198 |
+| NAUFA BINTI MOHD YAZID | 2413304 |
 
 ---
 
 ## Table of Contents
 
-1. [Introduction](#11-introduction)
-2. [Problem Description](#12-problem-description)
-3. [Project Objective](#13-project-objective)
-4. [Project Scope](#14-project-scope)
-5. [Constraints](#15-constraints)
-6. [Project Stages](#16-project-stages)
-7. [Significance of the Project](#17-significance-of-the-project)
-8. [ERD](#18-entity-relationship-diagram-erd)
-9. [Sequence Diagram](#19-sequence-diagram)
-10. [Summary](#110-summary)
-11. [References](#111-references)
+1. [Executive Summary](#10-executive-summary)
+2. [Problem Statement](#20-problem-statement)
+3. [System Design](#30-system-design)
+4. [Technical Implementation](#40-technical-implementation)
+5. [User Interface Design](#50-user-interface-design)
+6. [System Testing](#60-system-testing)
+7. [Challenges and Solutions](#70-challenges-and-solutions)
+8. [Conclusion](#80-conclusion)
+9. [References](#references)
 
 ---
 
-## 1.1 Introduction
+## 1.0 Executive Summary
 
-The proposed project is a Management Web Application for Food Leftovers using the Laravel framework. This application functions as a centralized marketplace connecting food businesses such as restaurants, food companies, and hotels, with consumers looking for cheaper or free food options. To ensure a flexible system, the app will be built using Laravel MVC Framework, featuring PHP Artisan, Blade templating engine, Eloquent ORM, etc. Key features include user authentication for both vendors and buyers, CRUD functionalities for food listings, and interactive interface to promote sustainability and reduce food wastage while ensuring full adherence to Shariah Law.
+### 1.1 Project Overview
 
----
+FoodSaver is a centralized web application developed using the Laravel Model-View-Controller (MVC) framework. The main purpose of the system is to help reduce food waste in Malaysia by connecting food providers with consumers through a real-time digital platform. Food businesses such as restaurants, hotels, home bakers, and catering services can use the platform to share surplus food with people who are looking for affordable or free food options.
 
-## 1.2 Problem Description
+The system was built using **Laravel 10.x (PHP 8.1+)**, **MySQL** for database management, the **Blade templating engine** for dynamic web pages, and **Bootstrap 5** to ensure a responsive and user-friendly interface.
 
-### 1.2.1 Background of the Problem
+Instead of relying on informal methods such as social media posts or word-of-mouth communication, FoodSaver provides a more organized and reliable platform for food redistribution. The system benefits both vendors and buyers while supporting Islamic values by encouraging responsible consumption, reducing waste (Israf), and promoting community welfare.
 
-Food waste in Malaysia has become a critical issue in Malaysia, demanding urgent attention from both the public and private sectors. According to the data from Solid Waste Management and Public Cleansing Corporation (SWCorp), up to 17,000 tonnes of food waste are recorded on a daily basis, of which approximately 4,005 tonnes are still edible, which could feed 2.9 million people three meals a day.
+### 1.2 Objectives Achieved
 
-The proposed solution for a food surplus management is a web application, which can be accessible via both desktop and mobile browsers, that target two main user groups; Sellers including restaurant owners, hotel food and beverage department, home bakers, catering businesses, and any food related enterprise with leftovers to be distributed, & Buyers comprising the general public, low income individuals, students, and anyone searching for affordable or free food options. Both of these groups currently lack an organized platform that helps bridge their needs, and one that can help reduce food waste at the same time.
+The project successfully achieved its main objectives:
 
-### 1.2.2 Problem Statement
-
-As of today, the food surplus management is still decentralized and inefficient. There's still no single platform where all food vendors can redistribute their surplus effectively, making consumers often rely on fragmented social media announcements or word-of-mouth to seek for affordable or free food. They lack real-time accuracy and reliability, which in result causes massive amounts of edible food being diverted into landfills, where its decomposition releases methane, a potent greenhouse gas that causes environmental damage. The following problems have been identified with the current ways of managing surplus food:
-
-1. Food wastage remains unaddressed — With no structured way for redistribution, huge amounts of fully edible food continue to be thrown away every day, contributing to environmental, economic, and social problems.
-2. Inefficient information flow — Consumers have no real-time, centralized visibility into available food surplus from local businesses, causing missed opportunities for redistribution.
-3. Resource inefficiency — Many businesses still struggle to track or manage waste because of having no integrated, data-enabled tools to handle waste distribution.
+-  Developed a complete food surplus management system using the Laravel MVC framework, allowing vendors to create, view, update, and delete food listings through a full CRUD implementation.
+-  Implemented a secure authentication system with three user roles: Vendors, Buyers, and Admin. Each role has its own dashboard and access permissions.
+-  Enabled buyers to view available surplus food listings in real time, replacing informal communication channels.
+-  Streamlined the food redistribution process by allowing vendors to post surplus food while buyers can browse, reserve, and cancel reservations.
+-  Successfully deployed the system on Railway and completed the final documentation.
 
 ---
 
-## 1.3 Project Objective
+## 2.0 Problem Statement
 
-The main objective of this project is to develop a centralized web-based platform that connects food vendors with consumers to reduce food waste in Malaysia. By the end of this project, the following will be achieved:
+### 2.1 Problem Background
 
-1. To develop a functional food surplus management system using the Laravel MVC framework with full CRUD operations, allowing vendors to create, update, and remove food listings in real time.
-2. To implement a secure user authentication system that distinguishes between two user roles: Vendors and Buyers, each with their own dashboard and access privileges.
-3. To provide buyers with real-time visibility of available surplus food listings from nearby businesses, replacing inefficient word-of-mouth and social media methods.
-4. To automate the food redistribution process by enabling vendors to post surplus food and buyers to browse, reserve, and claim listings through a structured and reliable platform.
-5. To produce a final report documenting the system design, implementation, database structure, and overall functionality of the application.
+Food waste in Malaysia has become a serious issue that requires immediate attention from both the public and private sectors. Based on data from the **Solid Waste Management and Public Cleansing Corporation (SWCorp)**, around **17,000 tonnes** of food waste are generated every day nationwide. What is more concerning is that about **4,005 tonnes** of this food are still edible, which could potentially feed around **2.9 million people** with three meals a day.
 
----
+There is currently no proper centralized system that effectively connects food providers with people who need affordable or free food. As a result, both sides face difficulties. Businesses struggle to redistribute excess food, while consumers miss out on opportunities to access it.
 
-## 1.4 Project Scope
+### 2.2 Problem Statement
 
-### 1.4.1 Scope
+Food surplus management in Malaysia is still largely unstructured and inefficient. This situation leads to several key issues:
 
-The application will cover the following functionalities:
+- **Food wastage is still widespread** — Without a proper redistribution system, large amounts of edible food are thrown away every day, contributing to environmental damage, economic loss, and social inequality.
+- **Poor information access** — Consumers have no centralized or real-time source to check available surplus food nearby.
+- **Low operational efficiency** — Many food businesses do not have proper digital tools to manage, track, or distribute their surplus food effectively.
 
-- User Registration and Authentication: Both vendors and buyers can register, log in, and manage their accounts securely using Laravel's built-in authentication system.
-- Food Listing Management (CRUD): Vendors can create, read, update, and delete their food surplus listings, including details such as food name, quantity, price (or free), expiry time, and pickup location.
-- Buyer Browsing and Reservation: Buyers can view all available listings, filter by category or location, and reserve food items through the platform.
-- Role-Based Access Control: The system will differentiate between Vendor and Buyer roles, ensuring each user only accesses features relevant to their role.
-- Admin Panel: A basic admin interface to monitor users and listings, and remove inappropriate content.
+### 2.3 Project Objectives
 
-Note: The application will NOT cover payment gateway integration, mobile app development, or delivery logistics in this phase.
+1. To develop a functional food surplus management system using the Laravel MVC framework, including full CRUD features.
+2. To implement a secure authentication system separating users into Vendor, Buyer, and Admin roles.
+3. To enable buyers to view available surplus food listings in real time from nearby businesses.
+4. To streamline and automate the food redistribution process through a structured reservation system.
+5. To prepare a complete final report documenting the system design, implementation, and functionality.
 
-### 1.4.2 Targeted User
+### 2.4 Project Scope
 
-Vendors: Restaurant owners, hotel F&B departments, home bakers, caterers, and food businesses with surplus food.
+**Included features:**
+- User Registration and Authentication (Vendor, Buyer, Admin)
+- Food Listing Management with full CRUD operations
+- Buyer Browsing, Filtering, and Reservation
+- Role-Based Access Control (RBAC)
+- Admin Panel for platform management
 
-Buyers: General public, low-income individuals, university students, and anyone seeking affordable or free food.
-
-Admin: System administrator responsible for managing platform content and user accounts.
-
-Age Group: Primarily 18–50 years old, covering students, working adults, and business owners.
-
-### 1.4.3 Specific Platform
-
-Software Requirements:
-
-- Framework: Laravel 10.x (PHP 8.1+)
-- Frontend: Blade Templating Engine, HTML, CSS, Bootstrap 5
-- Database: MySQL
-- Local Server: XAMPP / Laravel Herd
-- Version Control: GitHub
-- Code Editor: Visual Studio Code
-
-Hardware Requirements:
-
-- A computer with at least 8GB RAM and a modern processor for development purposes.
-- A stable internet connection for GitHub collaboration and deployment.
-
-Limitations and Solutions:
-
-- If university lab computers do not have Laravel pre-installed, the team will use personal laptops with XAMPP and Composer configured locally.
-- All code is managed via a shared GitHub repository to ensure consistent version control across all group members.
+**Not included (future improvements):**
+- Payment gateway integration
+- Mobile application development
+- Delivery logistics management
 
 ---
 
-## 1.5 Constraints
+## 3.0 System Design
 
-Several constraints have been identified that may impact the development and execution of this project:
-
-- Time Constraints: The development timeline is exceptionally tight, restricted to a mere 3-week window. This necessitates a highly accelerated and agile approach to the Software Development Life Cycle (SDLC), prioritizing only core functionalities to ensure timely delivery.
-- Budget Limitations: Operating on a zero budget, the project relies entirely on open-source tools (Laravel, MySQL) and local servers (e.g., XAMPP/Laragon) instead of paid cloud hosting.
-- Technical Constraints: Due to time and hosting limits, complex real-time features (e.g., live GPS, WebSockets) will be substituted with simpler alternatives like basic AJAX polling.
-- Users' Commitment for Testing: Securing real food vendors for testing may be difficult. To overcome this, the team will use realistic mock data to demonstrate the system's functionality.
-
----
-
-## 1.6 Project Stages
-
-Given the accelerated 3-week timeline, the project milestones have been heavily compressed to focus on rapid delivery.
-
-Phase 1 — Planning, Design & Setup (Week 1)
-- Project proposal, database schema, UI wireframes, and Laravel setup.
-
-Phase 2 — Core Development Part 1 (Week 1)
-- Database migration, Authentication, and Vendor (Seller) module CRUD.
-
-Phase 3 — Core Development Part 2 (Week 2)
-- Consumer module and search/reservation functionalities.
-
-Phase 4 — Testing & Debugging (Week 3)
-- System testing, bug fixing, and ensuring mobile responsiveness.
-
-Phase 5 — Finalization (Week 3)
-- Project report, user manual, and final presentation preparation.
-
----
-
-## 1.7 Significance of the Project
-
-The proposed Management Web Application for Food Leftovers gives many benefits in terms of environment, economy, and society. This system provides a centralized platform that helps reduce food waste in a more organized and efficient way. The benefits for each user group are explained below:
-
-### Vendors (Sellers)
-
-- Reduce Financial Loss
-  Restaurant owners, hotels, caterers, and food businesses can sell leftover food instead of throwing it away. This helps them recover some of their costs and reduce losses.
-
-- Improve Business Image and Responsibility
-  By joining this platform, businesses can show that they care about the environment and the community. This can improve their reputation and attract customers who support sustainable practices.
-
-- Better Waste Management
-  Vendors can keep track of their leftover food through the system. The recorded data can help them manage inventory better and reduce food overproduction in the future.
-
-- Support Islamic Values
-  For Muslim-owned businesses, reducing food waste is in line with Islamic teachings such as avoiding waste (Israf), being responsible (Khalifah), and helping the community.
-
-### Buyers (Consumers)
-
-- Affordable Food for Everyone
-  The platform helps the public, especially students and low-income groups, to buy quality food at cheaper prices.
-
-- Easy Access to Information
-  Buyers can quickly see available leftover food nearby through real-time updates instead of depending on social media or word-of-mouth information.
-
-- Simple and Convenient Process
-  Users can easily browse, reserve, and collect food through a user-friendly system with secure accounts.
-
-### Environment and Community
-
-- Reduce Environmental Pollution
-  Reducing food waste sent to landfills can lower methane gas emissions, which contribute to climate change.
-
-- Support Sustainability Efforts
-  This project helps Malaysia reduce food waste and supports national efforts to create a cleaner and more sustainable environment.
-
----
-
-## 1.8 Entity Relationship Diagram (ERD)
+### 3.1 Entity Relationship Diagram (ERD)
 
 ```
-+----------------+          +------------------+          +----------------+
-|     users      |          |  food_listings   |          |  reservations  |
-+----------------+          +------------------+          +----------------+
-| id (PK)        |1       N | id (PK)          |1       N | id (PK)        |
-| name           |----------| vendor_id (FK)   |----------| listing_id(FK) |
-| email          |          | title            |          | buyer_id (FK)  |
-| password       |          | description      |          | status         |
-| role           |          | quantity         |          | reserved_at    |
-| phone          |          | price            |          | created_at     |
-| address        |          | category         |          | updated_at     |
-| created_at     |          | expiry_time      |          +----------------+
-| updated_at     |          | pickup_location  |
-+----------------+          | image            |
-                            | status           |
-                            | created_at       |
-                            | updated_at       |
-                            +------------------+
-
-                  +----------------+
-                  |   categories   |
-                  +----------------+
-                  | id (PK)        |
-                  | name           |
-                  | created_at     |
-                  | updated_at     |
-                  +----------------+
++----------------+     +------------------+     +----------------+
+|     users      |     |  food_listings   |     |  reservations  |
++----------------+     +------------------+     +----------------+
+| id (PK)        |1  N | id (PK)          |1  N | id (PK)        |
+| name           |-----| vendor_id (FK)   |-----| listing_id(FK) |
+| email          |     | title            |     | buyer_id (FK)  |
+| password       |     | description      |     | status         |
+| role           |     | quantity         |     | reserved_at    |
+| phone          |     | price            |     | created_at     |
+| address        |     | category         |     | updated_at     |
+| created_at     |     | expiry_time      |     +----------------+
+| updated_at     |     | pickup_location  |
++----------------+     | image            |
+                        | status           |
+                   +----------------+      | created_at       |
+                   |   categories   |      | updated_at       |
+                   +----------------+      +------------------+
+                   | id (PK)        |
+                   | name           |
+                   | created_at     |
+                   | updated_at     |
+                   +----------------+
 ```
 
-Relationships:
+The FoodSaver database consists of four main tables. The **users** table is the core of the platform, storing account credentials and role assignments. The **food_listings** table manages surplus food inventory and maintains a one-to-many relationship with users through `vendor_id`. The **reservations** table links buyers to listings via `buyer_id` and `listing_id` foreign keys. The **categories** table provides standardized classification for food items.
+
+**Key relationships:**
 - A User (vendor) can have many Food Listings (one-to-many)
 - A Food Listing can have many Reservations (one-to-many)
 - A User (buyer) can make many Reservations (one-to-many)
 - A Food Listing belongs to one Category (many-to-one)
 
----
+### 3.2 System Sequence Diagram
 
-## 1.9 Sequence Diagram
-
-### Vendor — Post a Food Listing
+**Vendor — Post a Food Listing**
 
 ```
-Vendor          Browser           Laravel Router      Controller         Database
-  |                |                    |                  |                |
-  |-- Login ------>|                    |                  |                |
-  |                |-- POST /login ---->|                  |                |
-  |                |                   |-- AuthController->|                |
-  |                |                   |                  |-- Query ------->|
-  |                |                   |                  |<-- User Data ---|
-  |<-- Dashboard --|                   |                  |                |
-  |                |                   |                  |                |
-  |-- Add Listing->|                   |                  |                |
-  |                |-- POST /listings->|                  |                |
-  |                |                   |-- ListingController>|             |
-  |                |                   |                  |-- Insert ------>|
-  |                |                   |                  |<-- Success -----|
-  |<-- Confirmation|                   |                  |                |
+Vendor        Browser         Laravel Router    Controller       Database
+  |               |                 |                |               |
+  |-- Login ----->|                 |                |               |
+  |               |-- POST /login ->|                |               |
+  |               |                 |-- AuthCtrl --> |               |
+  |               |                 |                |-- Query ----->|
+  |               |                 |                |<-- User Data -|
+  |<-- Dashboard -|                 |                |               |
+  |               |                 |                |               |
+  |-- Add Listing>|                 |                |               |
+  |               |-- POST /listings>               |               |
+  |               |                 |-- ListingCtrl->|               |
+  |               |                 |                |-- Insert ---->|
+  |               |                 |                |<-- Success ---|
+  |<-- Confirm ---|                 |                |               |
 ```
 
-### Buyer — Browse and Reserve Food
+**Buyer — Browse and Reserve Food**
 
 ```
-Buyer           Browser           Laravel Router      Controller         Database
-  |                |                    |                  |                |
-  |-- Browse ----->|                    |                  |                |
-  |                |-- GET /listings -->|                  |                |
-  |                |                   |-- ListingController>|             |
-  |                |                   |                  |-- Query ------->|
-  |                |                   |                  |<-- Listings ----|
-  |<-- View List --|                   |                  |                |
-  |                |                   |                  |                |
-  |-- Reserve ---->|                   |                  |                |
-  |                |-- POST /reserve ->|                  |                |
-  |                |                   |-- ReservationController>|         |
-  |                |                   |                  |-- Insert ------>|
-  |                |                   |                  |<-- Success -----|
-  |<-- Confirmation|                   |                  |                |
+Buyer         Browser         Laravel Router    Controller       Database
+  |               |                 |                |               |
+  |-- Browse ---->|                 |                |               |
+  |               |-- GET /listings>|                |               |
+  |               |                 |-- ListingCtrl->|               |
+  |               |                 |                |-- Query ----->|
+  |               |                 |                |<-- Listings --|
+  |<-- View List -|                 |                |               |
+  |               |                 |                |               |
+  |-- Reserve --->|                 |                |               |
+  |               |-- POST /reserve>|                |               |
+  |               |                 |-- ReservCtrl ->|               |
+  |               |                 |                |-- Insert ---->|
+  |               |                 |                |<-- Success ---|
+  |<-- Confirm ---|                 |                |               |
 ```
 
----
+### 3.3 System Architecture Overview
 
-## 1.10 Summary
+FoodSaver follows the standard Laravel MVC architecture:
 
-The Management Web Application for Food Leftovers is developed to help reduce food waste in Malaysia, where large amounts of edible food are thrown away every day. The system is built using the Laravel MVC framework and provides a real-time platform that connects food vendors with consumers looking for affordable food.
-
-This application improves the current system by replacing unorganized methods such as social media sharing and word-of-mouth communication with a centralized and secure platform. Features such as CRUD functions and user authentication help make the system more organized and reliable.
-
-Overall, this project is a practical technology solution that helps reduce environmental problems, supports vendors and low-income buyers financially, and promotes Islamic values related to responsible resource management and community welfare.
-
----
-
-## 1.11 References
-
-Anon. (2022, February 15). Malaysia throws away 17,000 tonnes of food daily. The Malaysian Reserve. https://themalaysianreserve.com/2022/02/15/malaysia-throws-away-17000-tonnes-of-food-daily/
-
-Zainal, F. (2021, May 20). Daily food waste staggering. The Star. https://www.thestar.com.my/news/nation/2021/05/20/daily-food-waste-staggering
-
-The Lost Food Project. (n.d.). What we do. https://www.thelostfoodproject.org/what-we-do/
+```
+Browser → Routes (web.php) → Middleware (Auth/Role) → Controller
+    ↓
+Model (Eloquent) ↔ MySQL Database
+    ↓
+Blade View (.blade.php) → HTML Response → Browser
+```
 
 ---
 
-> Repository: BIIT 2305 — Web Application Development | Section 5
-> Last Updated: May 2026
+## 4.0 Technical Implementation
+
+### 4.1 Models & Database Migrations
+
+FoodSaver uses four Eloquent models: **User**, **FoodListing**, **Reservation**, and **Category**.
+
+The **User** model extends `Authenticatable` and supports three roles via helper methods:
+```php
+public function isVendor(): bool { return $this->role === 'vendor'; }
+public function isBuyer(): bool  { return $this->role === 'buyer'; }
+public function isAdmin(): bool  { return $this->role === 'admin'; }
+```
+
+**Eloquent Relationships:**
+
+| Model | Relationship | Target |
+|---|---|---|
+| User (vendor) | hasMany | FoodListing (via vendor_id) |
+| User (buyer) | hasMany | Reservation (via buyer_id) |
+| FoodListing | belongsTo | User (vendor) |
+| FoodListing | belongsTo | Category |
+| FoodListing | hasMany | Reservation |
+| Reservation | belongsTo | FoodListing (via listing_id) |
+| Reservation | belongsTo | User (buyer via buyer_id) |
+
+**Migration — food_listings table:**
+
+```php
+Schema::create('food_listings', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('vendor_id')->constrained('users')->onDelete('cascade');
+    $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
+    $table->string('title');
+    $table->text('description')->nullable();
+    $table->unsignedInteger('quantity');
+    $table->decimal('price', 8, 2)->default(0);
+    $table->string('pickup_location');
+    $table->timestamp('expiry_time')->nullable();
+    $table->string('image')->nullable();
+    $table->enum('status', ['available','reserved','claimed','expired'])->default('available');
+    $table->timestamps();
+});
+```
+
+### 4.2 Routes Configuration
+
+Routes are organized into four groups in `routes/web.php`:
+
+```php
+// Public
+Route::get('/', fn () => view('welcome'))->name('home');
+
+// Vendor — resource route with role middleware
+Route::middleware(['auth', 'role:vendor'])->prefix('vendor')->name('vendor.')->group(function () {
+    Route::resource('listings', VendorController::class)->names([...]);
+});
+
+// Buyer — manual routes with role middleware
+Route::middleware(['auth', 'role:buyer'])->prefix('buyer')->name('buyer.')->group(function () {
+    Route::get('/listings', [BuyerController::class, 'index'])->name('listings.index');
+    Route::post('/reserve/{listing}', [ReservationController::class, 'store'])->name('reserve');
+    Route::patch('/reservations/{id}/cancel', [ReservationController::class, 'cancel']);
+});
+
+// Admin
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::delete('/users/{id}', [AdminController::class, 'destroyUser'])->name('users.destroy');
+});
+```
+
+### 4.3 Controllers & CRUD Logic
+
+The `VendorController` handles all CRUD operations. Key example — the `store()` method:
+
+```php
+public function store(Request $request)
+{
+    $data = $request->validate([
+        'title'           => 'required|string|max:255',
+        'description'     => 'nullable|string',
+        'quantity'        => 'required|integer|min:1',
+        'price'           => 'required|numeric|min:0',
+        'category_id'     => 'nullable|exists:categories,id',
+        'pickup_location' => 'required|string|max:500',
+        'expiry_time'     => 'nullable|date|after:now',
+        'image'           => 'nullable|image|max:2048',
+    ]);
+
+    if ($request->hasFile('image')) {
+        $data['image'] = $request->file('image')->store('listings', 'public');
+    }
+
+    $data['vendor_id'] = Auth::id();
+    FoodListing::create($data);
+
+    return redirect()->route('vendor.listings.index')->with('success', 'Listing created.');
+}
+```
+
+- **Read:** `index()` paginates vendor's own listings (10/page) with eager-loaded categories. `show()` includes reservation and buyer details.
+- **Update:** Validates new data, replaces old image via `Storage::disk('public')->delete()`, scoped to vendor's own listings.
+- **Delete:** Removes listing and image; cascade rules auto-delete linked reservations.
+
+### 4.4 User Authentication & Security
+
+FoodSaver uses a **custom session-based authentication** system without third-party packages.
+
+- `RegisterController` validates 6 fields: name, email (unique), password (min 8, confirmed), role (vendor/buyer), phone, address.
+- `LoginController` uses `Auth::attempt()` and regenerates session ID to prevent session fixation.
+- **Role-Based Access Control** is enforced by a custom `RoleMiddleware`:
+
+```php
+public function handle(Request $request, Closure $next, string $role): Response
+{
+    if (!$request->user() || $request->user()->role !== $role) {
+        abort(403, 'Unauthorized.');
+    }
+    return $next($request);
+}
+```
+
+### 4.5 Views & Blade Template Engine
+
+All views extend a single master layout at `resources/views/layouts/app.blade.php`.
+
+The navbar adapts dynamically based on user role:
+
+```blade
+@auth
+    @if(auth()->user()->isVendor())
+        <a href="{{ route('vendor.listings.index') }}">My Listings</a>
+        <a href="{{ route('vendor.listings.create') }}">Add Listing</a>
+    @elseif(auth()->user()->isBuyer())
+        <a href="{{ route('buyer.listings.index') }}">Browse Food</a>
+        <a href="{{ route('buyer.reservations') }}">My Reservations</a>
+    @endif
+@endauth
+```
+
+The buyer feed uses `@forelse` to handle empty states, and `@if` to conditionally show the Reserve button only for available listings.
+
+---
+
+## 5.0 User Interface Design
+
+### 5.1 Use of Media
+
+- **Dynamic Food Images** — Uploaded via Laravel Storage and served from `public/listings/`
+- **Categorization Badges** — Color-coded Bootstrap `.badge` components pulled from the categories table
+- **Status Indicators** — Color-coded pills (🟢 available, 🟡 reserved, ⚫ expired)
+- **Bootstrap Icons** — `bi-geo-alt` for location, `bi-clock` for expiry, `bi-person` for profile
+
+![Buyer Feed](screenshots/buyer-feed.png)
+*Image 5.1 — Buyer Browse and Reserve Food*
+
+### 5.2 Design, Colour Scheme & Layout
+
+| Token | Value | Usage |
+|---|---|---|
+| Forest Green | `oklch(28% 0.075 153)` | Navbar, primary buttons |
+| Amber | `oklch(48% 0.14 145)` | Navbar accent, reserved badges |
+| White / Cream | `#ffffff` | Page and card backgrounds |
+| Dark | `oklch(14% 0.009 46)` | Body text |
+| Danger Red | `oklch(55% 0.22 27)` | Delete buttons, errors |
+
+**Typography:** DM Serif Display (headings) + Outfit (body copy) via Google Fonts.
+
+**Layout:** Bootstrap 5 mobile-first grid — 3 columns on desktop, 2 on tablet, 1 on mobile.
+
+![Landing Page](screenshots/landing.png)
+*Image 5.2.1 — Guest Landing Page*
+
+![Vendor Dashboard](screenshots/vendor-dashboard.png)
+*Image 5.2.2 — Vendor Dashboard*
+
+### 5.3 Navigation & Links
+
+The navbar is controlled globally via `layouts/app.blade.php` and changes based on session state:
+
+- **Guest Mode** — Logo, Login, Join Free buttons
+- **Vendor Mode** — My Listings, + Post Food, profile dropdown
+- **Buyer Mode** — Browse Food, My Reservations, profile dropdown
+- **Admin Mode** — Dashboard, Users, Listings, profile dropdown
+- **Fallback** — Unauthorized access to `/vendor/*` or `/buyer/*` returns HTTP 403
+
+![Guest Nav](screenshots/nav-guest.png)
+*Image 5.3.1 — Guest Navigation*
+
+![Vendor Nav](screenshots/nav-vendor.png)
+*Image 5.3.2 — Vendor Navigation*
+
+![Buyer Nav](screenshots/nav-buyer.png)
+*Image 5.3.3 — Buyer Navigation*
+
+### 5.4 UI Walkthrough
+
+**Landing Page**
+
+![Landing](screenshots/landing.png)
+*Image 5.4.1 — Landing Page*
+
+Hero section with bold "Less Waste. More Meals." headline, stats (17,000 / 4,005 / 2.9M), and CTA buttons to register as Vendor or Buyer.
+
+---
+
+**Registration & Login Page**
+
+![Register](screenshots/register.png)
+*Image 5.4.2 — Registration and Login Page*
+
+Clean card layout with role selector (Vendor / Buyer), full validation, and inline error messages.
+
+---
+
+**Vendor Dashboard**
+
+![Vendor Dashboard](screenshots/vendor-dashboard.png)
+*Image 5.4.3 — Vendor Dashboard*
+
+Displays all vendor listings in a table with status, quantity, category, and Edit / Delete actions.
+
+---
+
+**Post New Listing**
+
+![Post Listing](screenshots/post-listing.png)
+*Image 5.4.4 — Post New Listing*
+
+Form with title, description, quantity, price, category, expiry date-time picker, pickup location, and image upload.
+
+---
+
+**Buyer Feed Page**
+
+![Buyer Feed](screenshots/buyer-feed.png)
+*Image 5.4.5 — Buyer Feed Page*
+
+Card grid of available listings with search bar, category filter, expiry countdowns, and Reserve buttons.
+
+---
+
+**Reservation Page**
+
+![Reservation](screenshots/reservation.png)
+*Image 5.4.6 — Reservation Page*
+
+Detail view showing item info, vendor, pickup location, expiry, and a prominent Reserve Now button.
+
+---
+
+**Admin Panel**
+
+![Admin](screenshots/admin.png)
+*Image 5.4.7 — Admin Panel*
+
+Stats dashboard (total users, listings, reservations) with Manage Users and Manage Listings tables including Remove actions.
+
+---
+
+## 6.0 System Testing
+
+### 6.1 Test Cases Table
+
+| Test No. | Feature Tested | Test Input | Expected Result | Actual Result | Status |
+|---|---|---|---|---|---|
+| T-01 | User Registration (Vendor) | Valid details, role = Vendor | Account created, redirected to Vendor Dashboard | Account created, redirected to Vendor Dashboard | ✅ PASS |
+| T-02 | User Authentication | Correct credentials | Session initialized, redirected to role dashboard | Authenticated and redirected correctly | ✅ PASS |
+| T-03 | Create Food Listing | Valid inputs + image upload | Image stored in public/listings, DB row inserted | Item created and visible on vendor list | ✅ PASS |
+| T-04 | Form Validation (Expiry) | Past expiry date | Validation error via `after:now` rule | "The expiry time must be a date after now." shown | ✅ PASS |
+| T-05 | Update Food Listing | Edit item + new image | Old image deleted, DB row updated | Listing updated, old image replaced | ✅ PASS |
+| T-06 | Delete Food Listing | Delete active item | DB entry removed, linked reservations cascade deleted | Listing deleted, database integrity preserved | ✅ PASS |
+| T-07 | Browse Food Listings | Buyer accesses feed | Available items queried with eager-loaded categories | Items displayed with no N+1 query lag | ✅ PASS |
+| T-08 | Reserve Food Item | Buyer clicks Reserve | Reservation row inserted, listing status → reserved | Reservation recorded, status updated | ✅ PASS |
+| T-09 | Duplicate Reservation Prevention | Rapid double-click Reserve | `whereIn('status', ['pending','confirmed'])->exists()` blocks it | Second request blocked, flash error shown | ✅ PASS |
+| T-10 | Unauthorised Access | Buyer accesses `/vendor/listings` | RoleMiddleware blocks request | HTTP 403 Unauthorized returned | ✅ PASS |
+| T-11 | Mobile Responsiveness | Resize to mobile viewport | Grid stacks vertically, navbar collapses | Elements wrap cleanly, touch points functional | ✅ PASS |
+
+### 6.2 Deployment Verification
+
+**Live URL:** https://food-management-production.up.railway.app/
+
+Deployed on **Railway Cloud** with a cloud-hosted MySQL database. Production environment variables configured:
+
+- `APP_ENV=production` and `APP_DEBUG=false`
+- `APP_KEY` generated via `php artisan key:generate`
+- `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` mapped to Railway MySQL instance
+- `FILESYSTEM_DISK=public` with `php artisan storage:link` executed on the server
+
+---
+
+## 7.0 Challenges and Solutions
+
+### 7.1 Technical Challenges
+
+**1. Role-Based Access Control Implementation**
+Restricting buyers from accessing vendor routes required custom middleware. Resolved by implementing `RoleMiddleware` that checks the user's role on every protected request and returns a 403 on mismatch.
+
+**2. Foreign Key Constraint Errors**
+Early migrations failed when dropping or modifying linked tables. Resolved by using `Schema::disableForeignKeyConstraints()` and carefully ordering migration files by timestamp.
+
+**3. Deployment Environment Differences**
+Moving from local XAMPP to Railway introduced config mismatches (database credentials, storage paths). Resolved by updating `.env` for production, reconfiguring Railway MySQL credentials, and rerunning `php artisan migrate` on the live server.
+
+**4. Duplicate Reservation Bug**
+Rapid clicking allowed multiple reservations for the same listing. Resolved by adding an existence check in `ReservationController::store()`:
+```php
+$alreadyReserved = Reservation::where('listing_id', $listingId)
+    ->where('buyer_id', Auth::id())
+    ->whereIn('status', ['pending', 'confirmed'])
+    ->exists();
+```
+
+### 7.2 Team & Time Constraints
+
+**Accelerated Timeline:** The 3-week sprint was managed by prioritizing must-have features (Authentication, CRUD, Browsing) using an Agile approach.
+
+**Diverse Skill Levels:** Team members had varying Laravel experience. We used pair programming and internal code reviews — more experienced members guided others on MVC and migrations, while less technical members focused on UI and documentation.
+
+---
+
+## 8.0 Conclusion
+
+### 8.1 Summary of Achievements
+
+FoodSaver successfully delivered a fully functional, deployed web application addressing food waste in Malaysia. Key achievements:
+
+1.  Complete Laravel MVC app with full CRUD, live on Railway
+2.  Secure custom authentication with 3 roles (Vendor, Buyer, Admin) and middleware-based access control
+3.  Real-time buyer feed with search, category filter, and reservation system
+4.  Automated status synchronization across the full reservation lifecycle
+5.  Shariah-conscious design promoting responsible consumption and reducing Israf
+
+### 8.2 Future Improvements
+
+-  **Payment Gateway** — Integrate ToyyibPay or Stripe for discounted paid listings
+-  **GPS-Based Filtering** — Google Maps API for proximity-based listing discovery
+-  **Real-Time Chat** — Laravel Reverb/Pusher WebSockets for vendor-buyer coordination
+-  **Mobile App** — Flutter or React Native with push notifications
+-  **Auto-Expiry Command** — Laravel scheduler to auto-update expired listing statuses
+
+---
+
+## References
+
+- Hani, A. (2022, February 15). *Malaysia throws away 17,000 tonnes of food daily.* The Malaysian Reserve. https://themalaysianreserve.com/2022/02/15/malaysia-throws-away-17000-tonnes-of-food-daily/
+- Laravel LLC. (2023). *Laravel 10.x Documentation.* https://laravel.com/docs/10.x
+- Laravel LLC. (2023). *Eloquent ORM.* https://laravel.com/docs/10.x/eloquent
+- Laravel LLC. (2023). *Blade Templates.* https://laravel.com/docs/10.x/blade
+- Laravel LLC. (2023). *Authentication.* https://laravel.com/docs/10.x/authentication
+- Bootstrap Team. (2023). *Bootstrap 5.* https://getbootstrap.com/docs/5.3/
+- Otwell, T. (2023). *Laravel 10 Released.* https://laravel-news.com/laravel-10
+- Railway. (2024). *Railway Documentation.* https://railway.app
