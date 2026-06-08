@@ -347,7 +347,7 @@ The buyer feed uses `@forelse` to handle empty states, and `@if` to conditionall
 - **Status Indicators** — Color-coded pills (🟢 available, 🟡 reserved, ⚫ expired)
 - **Bootstrap Icons** — `bi-geo-alt` for location, `bi-clock` for expiry, `bi-person` for profile
 
-![Buyer Feed](screenshots/buyer-feed.png)
+![Buyer Feed](screenshots/image4.png)
 *Image 5.1 — Buyer Browse and Reserve Food*
 
 ### 5.2 Design, Colour Scheme & Layout
