@@ -179,6 +179,30 @@ Buyer         Browser         Laravel Router    Controller       Database
   |<-- Confirm ---|                 |                |               |
 ```
 
+**Vendor — Confirm & Complete a Reservation**
+
+```
+Vendor        Browser         Laravel Router    Controller       Database
+  |               |                 |                |               |
+  |-- View Listing>|               |                |               |
+  |               |-- GET /listings/{id}>|          |               |
+  |               |                 |-- VendorCtrl ->|              |
+  |<-- Buyer List-|                 |                |<-- Reserves --|
+  |               |                 |                |               |
+  |-- Confirm --->|                 |                |               |
+  |               |-- PATCH .../confirm>|            |               |
+  |               |                 |-- ReservCtrl ->|              |
+  |               |                 |                |-- pending→confirmed>|
+  |<-- Updated ---|                 |                |               |
+  |               |                 |                |               |
+  |-- Mark Done ->|                 |                |               |
+  |               |-- PATCH .../complete>|           |               |
+  |               |                 |-- ReservCtrl ->|              |
+  |               |                 |                |-- confirmed→completed>|
+  |               |                 |                |-- listing→claimed>|
+  |<-- Completed -|                 |                |               |
+```
+
 ### 3.3 System Architecture Overview
 
 FoodSaver follows the standard Laravel MVC architecture:
@@ -190,6 +214,30 @@ Model (Eloquent) ↔ MySQL Database
     ↓
 Blade View (.blade.php) → HTML Response → Browser
 ```
+
+### 3.4 Reservation Lifecycle
+
+When a buyer reserves a listing, the reservation and the listing move through a
+coordinated set of states until the food is picked up (or the hold is released):
+
+| Action | Actor | Reservation status | Listing status |
+|--------|-------|--------------------|----------------|
+| Listing posted | Vendor | — | `available` |
+| Reserve | Buyer | `pending` | `reserved` |
+| Confirm | Vendor | `confirmed` | `reserved` |
+| Mark Completed (picked up) | Vendor | `completed` | `claimed` |
+| Cancel | Buyer | `cancelled` | `available` (released back to marketplace) |
+
+Notes:
+- Reserving hides the listing from other buyers immediately (it leaves the
+  `available` browse list). A buyer cannot reserve the same item twice while a
+  `pending`/`confirmed` reservation exists.
+- The vendor confirms the buyer from the listing detail page, then marks it
+  **Completed** once collected — this closes the listing as `claimed`.
+- A buyer may **Cancel** a `pending` or `confirmed` reservation, which returns
+  the listing to `available` so it can be reserved again.
+- Vendor fulfilment actions are guarded so only the listing's owner can confirm
+  or complete its reservations.
 
 ---
 

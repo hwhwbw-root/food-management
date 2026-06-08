@@ -35,6 +35,10 @@ Route::middleware(['auth', 'role:vendor'])->prefix('vendor')->name('vendor.')->g
         'update'  => 'listings.update',
         'destroy' => 'listings.destroy',
     ]);
+
+    // Reservation fulfilment (vendor side)
+    Route::patch('/reservations/{id}/confirm', [ReservationController::class, 'confirm'])->name('reservations.confirm');
+    Route::patch('/reservations/{id}/complete', [ReservationController::class, 'complete'])->name('reservations.complete');
 });
 
 // Buyer

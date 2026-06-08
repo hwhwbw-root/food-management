@@ -47,4 +47,51 @@ class ReservationController extends Controller
 
         return back()->with('success', 'Reservation cancelled.');
     }
+
+    /**
+     * Vendor confirms a pending reservation (pending -> confirmed).
+     * The listing stays 'reserved' until pickup is completed.
+     */
+    public function confirm(string $id)
+    {
+        $reservation = $this->vendorReservation($id);
+
+        if ($reservation->status !== 'pending') {
+            return back()->with('error', 'Only pending reservations can be confirmed.');
+        }
+
+        $reservation->update(['status' => 'confirmed']);
+
+        return back()->with('success', 'Reservation confirmed. The buyer can now collect the food.');
+    }
+
+    /**
+     * Vendor marks a reservation as completed once the buyer has picked up
+     * (pending/confirmed -> completed) and the listing is closed as 'claimed'.
+     */
+    public function complete(string $id)
+    {
+        $reservation = $this->vendorReservation($id);
+
+        if (! in_array($reservation->status, ['pending', 'confirmed'])) {
+            return back()->with('error', 'This reservation can no longer be completed.');
+        }
+
+        $reservation->update(['status' => 'completed']);
+        $reservation->listing->update(['status' => 'claimed']);
+
+        return back()->with('success', 'Reservation marked as completed.');
+    }
+
+    /**
+     * Fetch a reservation and ensure its listing belongs to the current vendor.
+     */
+    protected function vendorReservation(string $id): Reservation
+    {
+        $reservation = Reservation::with('listing')->findOrFail($id);
+
+        abort_unless($reservation->listing->vendor_id === Auth::id(), 403);
+
+        return $reservation;
+    }
 }

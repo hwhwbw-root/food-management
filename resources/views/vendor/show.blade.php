@@ -94,6 +94,7 @@
                     <th>Email</th>
                     <th>Status</th>
                     <th>Reserved At</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -103,6 +104,32 @@
                     <td style="color:var(--muted);">{{ $r->buyer->email }}</td>
                     <td><span class="status-badge badge-{{ $r->status }}">{{ ucfirst($r->status) }}</span></td>
                     <td style="color:var(--muted);font-size:.8rem;">{{ $r->reserved_at->format('d M Y, h:i A') }}</td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            @if($r->status === 'pending')
+                                <form method="POST" action="{{ route('vendor.reservations.confirm', $r->id) }}" class="d-inline">
+                                    @csrf @method('PATCH')
+                                    <button class="btn btn-outline-primary btn-sm" style="font-size:.75rem;">
+                                        <i class="bi bi-check2 me-1"></i>Confirm
+                                    </button>
+                                </form>
+                            @endif
+
+                            @if(in_array($r->status, ['pending', 'confirmed']))
+                                <form method="POST" action="{{ route('vendor.reservations.complete', $r->id) }}" class="d-inline"
+                                      onsubmit="return confirm('Mark this reservation as picked up &amp; completed?')">
+                                    @csrf @method('PATCH')
+                                    <button class="btn btn-success btn-sm" style="font-size:.75rem;">
+                                        <i class="bi bi-bag-check me-1"></i>Mark Completed
+                                    </button>
+                                </form>
+                            @endif
+
+                            @if(in_array($r->status, ['cancelled', 'completed']))
+                                <span style="color:var(--border);font-size:.8rem;">—</span>
+                            @endif
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
